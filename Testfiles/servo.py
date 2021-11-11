@@ -12,14 +12,14 @@ if uni == 1:
 def tuerzu():
     if uni == 1:
         p.ChangeDutyCycle(10)
-    print("Tür ist geöffnet!")
+    print("Tür ist geschlossen!")
     time.sleep(2)
 
 
 def tuerauf():
     if uni == 1:
         p.ChangeDutyCycle(5)
-    print("Tür ist geschlossen!")
+    print("Tür ist geöffnet!")
     time.sleep(2)
 
 
