@@ -9,14 +9,14 @@ if uni == 1:
     p.start(2.5)  # Initialisierung
 
 
-def tuerauf():
+def tuerzu():
     if uni == 1:
         p.ChangeDutyCycle(10)
     print("Tür ist geöffnet!")
     time.sleep(2)
 
 
-def tuerzu():
+def tuerauf():
     if uni == 1:
         p.ChangeDutyCycle(5)
     print("Tür ist geschlossen!")
