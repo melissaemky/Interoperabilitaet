@@ -5,16 +5,12 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
-TASTER = 20
-AUSGANG = 15
-
-GPIO.setup(TASTER, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(AUSGANG, GPIO.OUT)
-
+GPIO.setup(21, GPIO.IN)
 while True:
-    tasterStatus = GPIO.input(TASTER)
-    if ((tasterStatus) == False):
-        print("Test")
+    if GPIO.input(21) == 1:
+        print("Bitte Karte zum Speichern auflegen!")
+    if GPIO.input(16) == 1:
+        print("Bitte Karte zum Löschen auflegen!")
 
 try:
     id, text = reader.read()
