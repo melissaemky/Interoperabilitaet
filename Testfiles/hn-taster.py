@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import pywhatKit as whatsapp
+import pywhatkit as whatsapp
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
