@@ -10,7 +10,7 @@ GPIO.setup(16, GPIO.IN)
 while True:
     if GPIO.input(16) == 0:
         print("!!!Hausnotrum ALARM!!!")
-        whatsapp.sendwhatsmsg("+4915783867643","!!!Alarm!!! Oma braucht Hilfe",18,21)
+        whatsapp.sendwhats_image(phone_no="+4915783867643",img_path="img/Oma.jpg",caption="!!!Alarm!!! Oma braucht Hilfe")
         #Tür geht auf
         time.sleep(300)
 
