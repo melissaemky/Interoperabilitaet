@@ -3,6 +3,7 @@ import time
 from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
+GPIO.setwarnings(False)
 """
 
 GPIO.setmode(GPIO.BCM)
