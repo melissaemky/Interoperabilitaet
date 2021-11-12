@@ -1,7 +1,17 @@
 import RPi.GPIO as GPIO
-TASTER = 16
-GPIO.setup(TASTER, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
-tasterStatus = GPIO.input(TASTER)
-if ((tasterStatus) == True):
-    print ("Alarm")
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(16, GPIO.IN)
+"""
+if GPIO.input(16) == 0:
+    print("Taster nicht gedrückt")
+else:
+    print("Taster gedrückt")
+"""
+
+# Endlosschleife
+while True:
+    if GPIO.input(16) == 1:
+        print("!!!Hausnotrum ALARM!!!")
+
+        
