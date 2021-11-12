@@ -29,4 +29,3 @@ GPIO 24 =
 GPIO 25 = 
 GPIO 26 = 
 GPIO 27 = 
-
