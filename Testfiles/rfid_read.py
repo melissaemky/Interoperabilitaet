@@ -13,3 +13,4 @@ GPIO.input(21)
     print(id)
 finally:
     GPIO.cleanup()
+'''
