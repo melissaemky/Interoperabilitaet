@@ -4,7 +4,6 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN)  # Grüner Taster(Speichern)
 GPIO.setup(20, GPIO.IN)  # Blauer Taser(Speichern)
