@@ -11,7 +11,7 @@ else:
 
 # Endlosschleife
 while True:
-    if GPIO.input(16) == 1:
+    if GPIO.input(16) == 0:
         print("!!!Hausnotrum ALARM!!!")
 
         
