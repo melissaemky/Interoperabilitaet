@@ -4,9 +4,9 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN)  # Grüner Taster(Speichern)
-GPIO.setup(20, GPIO.IN)  # Blauer Taser(Speichern)
+# GPIO.setmode(GPIO.BCM)
+GPIO.setup(29, GPIO.IN)  # Grüner Taster(Speichern)
+GPIO.setup(28, GPIO.IN)  # Blauer Taser(Speichern)
 
 l = []
 x = l.pop()
