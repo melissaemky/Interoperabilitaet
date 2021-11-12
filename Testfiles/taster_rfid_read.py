@@ -3,8 +3,6 @@ import time
 from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
-GPIO.cleanup()
-"""
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN)  # Grüner Taster(Speichern)
@@ -25,4 +23,4 @@ while True:
         time.sleep(2)
     if GPIO.input(20) == 0:
         print("Blauer Taster gedrückt")
-        time.sleep(2)"""
+        time.sleep(2)
