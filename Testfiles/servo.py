@@ -1,5 +1,5 @@
 import time
-uni = 0
+uni = 1
 if uni == 1:
     import RPi.GPIO as GPIO
     servoPIN = 18
