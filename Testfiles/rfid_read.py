@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import RPi.GPIO as GPIO
+import time
 #from mfrc522 import SimpleMFRC522
 
 
