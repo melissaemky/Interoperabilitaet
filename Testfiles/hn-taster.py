@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-Taster = 16
+TASTER = 16
 GPIO.setup(TASTER, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 tasterStatus = GPIO.input(TASTER)
