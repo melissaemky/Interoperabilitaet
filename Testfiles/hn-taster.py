@@ -14,6 +14,7 @@ else:
 while True:
     if GPIO.input(16) == 0:
         print("!!!Hausnotrum ALARM!!!")
+        #Tür geht auf
         time.sleep(1)
 
         
