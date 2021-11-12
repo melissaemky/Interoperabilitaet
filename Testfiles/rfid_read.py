@@ -6,6 +6,7 @@ from mfrc522 import SimpleMFRC522
 reader = SimpleMFRC522()
 
 GPIO.setup(21, GPIO.IN)
+GPIO.setup(16, GPIO.IN)
 while True:
     if GPIO.input(21) == 1:
         print("Bitte Karte zum Speichern auflegen!")
