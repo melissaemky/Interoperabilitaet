@@ -9,6 +9,7 @@ GPIO.setup(21, GPIO.IN)  # Grüner Taster(Speichern)
 GPIO.setup(20, GPIO.IN)  # Blauer Taser(Speichern)
 
 l = []
+x = l.pop()
 
 
 def speichern():
@@ -21,6 +22,7 @@ while True:
         speichern()
         print(reader)
         time.sleep(2)
+        print(x)
     if GPIO.input(20) == 0:
         print("Blauer Taster gedrückt")
         time.sleep(2)
