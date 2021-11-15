@@ -20,7 +20,7 @@ while True:
     if GPIO.input(40) == 0:
         time.sleep(5)
         speichern()
-        print(reader)
+        print(id)
         time.sleep(2)
         x = l.pop()
         print(x)
