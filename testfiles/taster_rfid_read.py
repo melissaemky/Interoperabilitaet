@@ -40,6 +40,7 @@ def speichern():
 
 def löschen():
     id, text = reader.read()
+    print(cfg.has_section(id))
     if cfg.has_section(id) == True:
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
