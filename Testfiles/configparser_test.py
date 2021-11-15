@@ -1,7 +1,7 @@
 import configparser
 cfg = configparser.ConfigParser()
 
-cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+# cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
 
 #benutzer = cfg.get('', 'Heizdauer')
 
