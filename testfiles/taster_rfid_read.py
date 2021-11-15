@@ -62,4 +62,3 @@ while True:
     if GPIO.input(38) == 0:
         time.sleep(1)
         löschen()
-    # cfg.close()
