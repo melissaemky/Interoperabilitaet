@@ -27,7 +27,8 @@ def speichern():
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.add_section(str(id))
         cfg.set(str(id), 'zugang', 'gestattet')
-        cfg.set(str(id), 'gelöscht am', datetime.now())
+        x = datetime.now()
+        cfg.set(str(id), 'gespeichert am', str(x))
         cfg.write(cfgfile)
         cfgfile.close()
         print(id + " gespeichert und Zugang gestattet")
@@ -39,6 +40,8 @@ def löschen():
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'verweigert')
+        x = datetime.now()
+        cfg.set(str(id), 'gelöscht am', str(x))
         cfg.write(cfgfile)
         cfgfile.close()
         print(id + " Zugang verweigert")
