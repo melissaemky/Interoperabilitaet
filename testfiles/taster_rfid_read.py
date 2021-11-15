@@ -11,22 +11,25 @@ GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Speichern)
 
 id = ''
+cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
 
 
 def speichern():
     id, text = reader.read()
-    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+    cfgfile = open(
+        "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
     cfg.add_section(str(id))
-    cfg.write(cfg)
-    cfg.close()
+    cfg.write(cfgfile)
+    cfgfile.close()
 
 
 def löschen():
     id, text = reader.read()
-    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+    cfgfile = open(
+        "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
     cfg.remove_section(str(id))
-    cfg.write(cfg)
-    cfg.close()
+    cfg.write(cfgfile)
+    cfgfile.close()
 
 
 while True:
