@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 from mfrc522 import SimpleMFRC522
 import configparser
+import datetime
 cfg = configparser.ConfigParser()
 
 reader = SimpleMFRC522()
@@ -17,6 +18,7 @@ def speichern():
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'gestattet')
+        cfg.set(str(id), 'gespeichert am', datetime.now())
         cfg.write(cfgfile)
         cfgfile.close()
         print(id + " Zugang gestattet")
@@ -25,6 +27,7 @@ def speichern():
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.add_section(str(id))
         cfg.set(str(id), 'zugang', 'gestattet')
+        cfg.set(str(id), 'gelöscht am', datetime.now())
         cfg.write(cfgfile)
         cfgfile.close()
         print(id + " gespeichert und Zugang gestattet")
