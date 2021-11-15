@@ -35,4 +35,4 @@ while True:
         löschen()
         time.sleep(2)
         print(id)
-        print(*l, sep="\n")
+        #print(*l, sep="\n")
