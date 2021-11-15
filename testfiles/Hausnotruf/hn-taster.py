@@ -4,8 +4,8 @@ from twilio.rest import Client
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
 
-account_sid = "AC3b9a640bf840e9f26596a841e249f686"
-auth_token = "88a999d85cca042e7d31c06a6e7356ad"
+account_sid = "ACd0fd71a46caf82f89a833cebaa7cd506"
+auth_token = "c2e789b60f967f6bbaf78d0e9fd3f768"
 FROM= '+12674592798'
 TO= '+4915770217327'
 
