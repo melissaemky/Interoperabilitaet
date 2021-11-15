@@ -4,9 +4,9 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
-GPIO.output(23, GPIO.HIGH)
+GPIO.output(12, GPIO.HIGH)
 time.sleep(1)
-GPIO.output(23, GPIO.LOW)
+GPIO.output(12, GPIO.LOW)
 
 """
 while raum == 0:
