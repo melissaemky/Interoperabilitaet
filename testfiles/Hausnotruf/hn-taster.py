@@ -4,10 +4,10 @@ from twilio.rest import Client
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
 
-account_sid = "AC3b9a640bf840e9f26596a841e249f686"
-auth_token = "fdf9ae04ae3555c0dbd08aed5e1eec31"
-FROM= '0014155238886'
-TO= '004915770217327'
+account_sid = "ACd0fd71a46caf82f89a833cebaa7cd506"
+auth_token = "c2e789b60f967f6bbaf78d0e9fd3f768"
+FROM= '+12674592798'
+TO= '+4915770217327'
 
 # Endlosschleife
 while True:
