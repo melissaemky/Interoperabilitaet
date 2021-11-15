@@ -16,7 +16,7 @@ while True:
         print("!!!Hausnotrum ALARM!!!")
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
         client.message.create(
-            to=TO
+            to=TO,
             from_=FROM,
             body="!!!Hausnotrum ALARM!!!")
         time.sleep(300)
