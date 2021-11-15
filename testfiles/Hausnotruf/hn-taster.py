@@ -5,9 +5,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
 
 account_sid = "AC3b9a640bf840e9f26596a841e249f686"
-auth_token = "fdf9ae04ae3555c0dbd08aed5e1eec31"
-FROM= '0014155238886'
-TO= '004915770217327'
+auth_token = "88a999d85cca042e7d31c06a6e7356ad"
+FROM= '+12674592798'
+TO= '+4915770217327'
 
 # Endlosschleife
 while True:
