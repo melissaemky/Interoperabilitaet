@@ -57,8 +57,9 @@ def löschen():
 while True:
     cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
     if GPIO.input(40) == 0:
-        time.sleep(5)
+        time.sleep(1)
         speichern()
     if GPIO.input(38) == 0:
-        time.sleep(5)
+        time.sleep(1)
         löschen()
+    # cfg.close()
