@@ -11,3 +11,4 @@ cfg.set('benutzer1', 'id', 'test')
 cfg.set('benutzer1', 'zugang', 'darf rein')
 cfg.write(cfgfile)
 cfgfile.close()
+
