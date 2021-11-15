@@ -18,10 +18,11 @@ def speichern():
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'gestattet')
-        cfg.set(str(id), 'gespeichert am', datetime.now())
+        x = datetime.now()
+        cfg.set(str(id), 'gespeichert am', str(x))
         cfg.write(cfgfile)
         cfgfile.close()
-        print(id + " Zugang gestattet")
+        print(str(id) + " Zugang gestattet")
     else:
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
@@ -31,7 +32,7 @@ def speichern():
         cfg.set(str(id), 'gespeichert am', str(x))
         cfg.write(cfgfile)
         cfgfile.close()
-        print(id + " gespeichert und Zugang gestattet")
+        print(str(id) + " gespeichert und Zugang gestattet")
 
 
 def löschen():
@@ -44,7 +45,7 @@ def löschen():
         cfg.set(str(id), 'gelöscht am', str(x))
         cfg.write(cfgfile)
         cfgfile.close()
-        print(id + " Zugang verweigert")
+        print(str(id) + " Zugang verweigert")
     else:
         print("Karte noch nie gespeichert!")
 
