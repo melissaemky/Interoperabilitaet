@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 from mfrc522 import SimpleMFRC522
 import configparser
-import datetime
+from datetime import datetime
 cfg = configparser.ConfigParser()
 
 reader = SimpleMFRC522()
