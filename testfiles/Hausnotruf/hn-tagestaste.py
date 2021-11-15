@@ -1,21 +1,11 @@
-import ntplib
-from time import ctime
+from datetime import datetime
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(XXX, GPIO.IN) ###Button GPIO pin setzen
 
-###pip install ntplib
-
-#Zeit aus Netz holen
-def print_time():
-    ntpClient = ntplib.ntpClient()
-    response = ntpClient.request('pool.ntp.org')
-
-    print(ctime(response.tx_time))
-
-if __name__ == "__main__":
-        print_time()
+#Aktuelle Zeit
+x = datetime.now()
 
 #Letzten Buttondruck abfragen
 while True:
