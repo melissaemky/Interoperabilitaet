@@ -19,9 +19,9 @@ TO= '+4915770217327'
 # Endlosschleife Button press
 while True:
     if GPIO.input(16) == 0:
-        print("!!!Hausnotruf ALARM!!! \n {x}")
+        print("!!!Hausnotruf ALARM!!!\n"+str(x))
         Client(account_sid, auth_token).messages.create(
-            body= "!!!Hausnotruf ALARM!!! \n {x}",
+            body= "\n!!!Hausnotruf ALARM!!!\n"+str(x),
             to= TO,
             from_= FROM)
         time.sleep(10)
