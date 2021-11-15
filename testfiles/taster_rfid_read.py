@@ -15,25 +15,26 @@ id = ''
 
 def speichern():
     id, text = reader.read()
-    cfgfile = open(
-        "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
     cfg.add_section(str(id))
-    cfg.write(cfgfile)
-    cfgfile.close()
+    cfg.write(cfg)
+    cfg.close()
 
 
 def löschen():
     id, text = reader.read()
+    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+    cfg.remove_section(str(id))
+    cfg.write(cfg)
+    cfg.close()
 
 
 while True:
     if GPIO.input(40) == 0:
         time.sleep(5)
         speichern()
-        time.sleep(2)
         print(id)
     if GPIO.input(38) == 0:
         time.sleep(5)
         löschen()
-        time.sleep(2)
         print(id)
