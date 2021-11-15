@@ -14,7 +14,7 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Speichern)
 
 def speichern():
     id, text = reader.read()
-    if cfg.has_section(id):
+    if cfg.has_section(id) == True:
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'gestattet')
@@ -35,13 +35,15 @@ def speichern():
 
 def löschen():
     id, text = reader.read()
-    if cfg.has_section(id):
+    if cfg.has_section(id) == True:
         cfgfile = open(
             "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'verweigert')
         cfg.write(cfgfile)
         cfgfile.close()
         print(id + " Zugang verweigert")
+    else:
+        print("Karte noch nie gespeichert!")
 
 
 while True:
