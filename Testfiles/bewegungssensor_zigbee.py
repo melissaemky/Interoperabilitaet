@@ -13,6 +13,6 @@ while raum == 0:
     if state == 1:
         print("jemand da")
         raum = 1
-        GPIO.output(12, GPIO.HIGH)
+        GPIO.output(17, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(12, GPIO.LOW)
+        GPIO.output(17, GPIO.LOW)
