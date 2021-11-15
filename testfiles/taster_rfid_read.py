@@ -17,7 +17,7 @@ def speichern():
     id, text = reader.read()
     cfgfile = open(
         "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
-    cfg.add_section(id)
+    cfg.add_section(str(id))
     cfg.write(cfgfile)
     cfgfile.close()
 
