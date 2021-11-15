@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-import request, json
 from twilio.rest import client
 
 GPIO.setmode(GPIO.BCM)
