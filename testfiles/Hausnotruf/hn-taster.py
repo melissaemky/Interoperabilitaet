@@ -14,7 +14,7 @@ TO= '+4915770217327'
 while True:
     if GPIO.input(16) == 0:
         print("!!!Hausnotrum ALARM!!!")
-        client = twilio.rest.TwilioRestClient(account_sid, auth_token)
+        client = twilio.rest.Client(account_sid, auth_token)
         client.messages.create(
             to=TO,
             from_=FROM,
