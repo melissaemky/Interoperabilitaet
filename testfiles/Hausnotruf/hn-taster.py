@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from twilio.rest import Client
+from time import ctime
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
