@@ -15,4 +15,4 @@ while raum == 0:
         raum = 1
         #GPIO.output(12, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(12, GPIO.LOW)
+        #GPIO.output(12, GPIO.LOW)
