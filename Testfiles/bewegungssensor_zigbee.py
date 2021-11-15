@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from gtts import gTTS
+#from gtts import gTTS
 from pygame import mixer
 raum = 0
 language = 'de'
