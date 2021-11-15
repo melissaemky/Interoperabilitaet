@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 from mfrc522 import SimpleMFRC522
+import configparser
 
 reader = SimpleMFRC522()
 
@@ -10,6 +11,19 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Speichern)
 
 l = []
 id = ''
+
+logfile = open('/home/pi/Heizungssteuerung/logfile.txt','a')
+
+cfg = configparser.ConfigParser()
+cfg.read('/home/pi/Heizungssteuerung/heizung-config.ini')
+
+heizdauer = cfg.get('Parameter', 'Heizdauer')
+
+cfgfile = open("/home/pi/Heizungssteuerung/heizung-config.ini",'w')
+cfg.set('DoNotChange','heizen',str(heizung_status))
+cfg.set('DoNotChange','letzteheizperiode', letzte_heizung.strftime("%d/%m/%Y, %H:%M:%S")) 
+cfg.write(cfgfile)
+cfgfile.close()
 
 
 def speichern():
