@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import os
-from  twilio.rest import Client
+from  twilio import Client
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
@@ -16,7 +16,7 @@ while True:
         print("!!!Hausnotrum ALARM!!!")
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
         client.message.create(
-            to=TO
+            to=TO,
             from_=FROM,
             body="!!!Hausnotrum ALARM!!!")
         time.sleep(300)
