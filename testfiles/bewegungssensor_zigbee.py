@@ -3,7 +3,7 @@ import json
 import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
 raum = 0
 time.sleep(10)
 while raum == 0:
@@ -14,5 +14,5 @@ while raum == 0:
         print("jemand da")
         raum = 1
         GPIO.output(17, GPIO.HIGH)
-        time.sleep(1)
+        time.sleep(3)
         GPIO.output(17, GPIO.LOW)
