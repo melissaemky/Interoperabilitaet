@@ -23,6 +23,6 @@ while True:
         finally:
             GPIO.cleanup()
         if cfg.has_section(str(id)) == True:
-            tuerauf()
+            tuerauf
         else:
-            tuerzu()
+            tuerzu
