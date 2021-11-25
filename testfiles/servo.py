@@ -2,8 +2,8 @@ import time
 uni = 1
 if uni == 1:
     import RPi.GPIO as GPIO
-    servoPIN = 18
-    GPIO.setmode(GPIO.BCM)
+    servoPIN = 12
+    GPIO.setmode(GPIO.BOARD)
     GPIO.setup(servoPIN, GPIO.OUT)
     p = GPIO.PWM(servoPIN, 50)  # GPIO 18 als PWM mit 50Hz
     p.start(2.5)  # Initialisierung
