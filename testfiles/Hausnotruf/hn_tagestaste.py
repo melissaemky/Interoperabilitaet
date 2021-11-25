@@ -1,9 +1,5 @@
-import RPi.GPIO as GPIO
 import time                                             #für time.sleep
 import hn_taster as alarm                               #hn_taster importieren
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(XXX, GPIO.IN)                                #Button GPIO pin setzen
 
 t = 46800                                               # 13h in Sekunden
 
