@@ -26,9 +26,9 @@ if GPIO.input(26) == 0:
 
 #Alarm + SMS auslösen
 def alarm():
-    print("!!!Hausnotruf ALARM!!!\n"+str(x))
+    print("!!!Hausnotruf ALARM!!!\n"+str(x.hour))
     Client(account_sid, auth_token).messages.create(
-        body= "\n!!!Hausnotruf ALARM!!!\n"+str(x),
+        body= "\n!!!Hausnotruf ALARM!!!\n"+str(x.hour),
         to= TO,
         from_= FROM)
     #time.sleep(10)
