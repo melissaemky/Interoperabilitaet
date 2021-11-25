@@ -28,7 +28,6 @@ def alarm():
     print("!!!Hausnotruf ALARM!!!\n"+str(x))
     Client(account_sid, auth_token).messages.create(
         body= "\n!!!Hausnotruf ALARM!!!\n"+str(x),
-        img= '/img/alarm.png', #vielleicht raus nehmen
         to= TO,
         from_= FROM)
     time.sleep(10)
