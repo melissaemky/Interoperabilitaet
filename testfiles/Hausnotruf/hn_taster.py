@@ -6,7 +6,7 @@ import hn_tagestaste
 import configparser
 
 import sys                                                          #Twilio Anmeldedaten einbinden
-sys.path.insert(1,"/home/pi")
+sys.path.insert(1,"/home/pi/config_dateien")
 from twilio_anmeldung import auth_token, account_sid, FROM, TO
 
 cfg = configparser.ConfigParser()
