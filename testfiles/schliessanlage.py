@@ -22,8 +22,8 @@ while True:
             print(id)
             cfg.read('/home/pi/config_dateien/benutzer.ini')
             if cfg.has_section(str(id)) == True:
-                tuerauf
+                tuerauf()
             else:
-                tuerzu
+                tuerzu()
         finally:
             GPIO.cleanup()
