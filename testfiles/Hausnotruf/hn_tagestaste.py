@@ -1,5 +1,5 @@
 import time                                             #für time.sleep
-import hn_taster                                        #hn_taster importieren
+import hn_taster
 
 t = 46800                                               # 13h in Sekunden
 
