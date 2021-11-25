@@ -10,9 +10,10 @@ x = datetime.now()
 #GPIO set
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(16, GPIO.IN)
+GPIO.setup(26, GPIO.IN)
 
 #hn-tagestaste - countdown restart
-if GPIO.input(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27) == 0:
+if GPIO.input(26) == 0:
     hn_tagestaste.countdown.exit()
     hn_tagestaste.countdown(int(t))
 
