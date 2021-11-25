@@ -3,7 +3,7 @@
 import time
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
-from testfiles.servo import tuerauf, tuerzu
+from servo import tuerauf, tuerzu
 import configparser
 cfg = configparser.ConfigParser()
 
