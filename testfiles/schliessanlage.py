@@ -20,9 +20,9 @@ while True:
         try:
             id, text = reader.read()
             print(id)
+            if cfg.has_section(str(id)) == True:
+                tuerauf
+            else:
+                tuerzu
         finally:
             GPIO.cleanup()
-        if cfg.has_section(str(id)) == True:
-            tuerauf
-        else:
-            tuerzu
