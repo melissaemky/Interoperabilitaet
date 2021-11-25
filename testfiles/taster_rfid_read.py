@@ -1,9 +1,11 @@
+import sys
 import RPi.GPIO as GPIO
 import time
 from mfrc522 import SimpleMFRC522
 import configparser
 from datetime import datetime
 cfg = configparser.ConfigParser()
+sys.path.insert(1, "/home/pi/config_dateien")
 
 reader = SimpleMFRC522()
 
