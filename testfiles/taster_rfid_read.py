@@ -9,7 +9,7 @@ reader = SimpleMFRC522()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
-GPIO.setup(40, GPIO.IN)  # Grüner Taser(Speichern)
+GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
 
 def speichern():
@@ -18,7 +18,7 @@ def speichern():
     if cfg.has_section(str(id)) == True:
         print("Karte bekannt")
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'gestattet')
         x = datetime.now()
         cfg.set(str(id), 'gespeichert am', str(x))
@@ -28,7 +28,7 @@ def speichern():
     else:
         print("Karte unbekannt")
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.add_section(str(id))
         cfg.set(str(id), 'zugang', 'gestattet')
         x = datetime.now()
@@ -43,7 +43,7 @@ def löschen():
     print(cfg.has_section(str(id)))
     if cfg.has_section(str(id)) == True:
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'verweigert')
         x = datetime.now()
         cfg.set(str(id), 'gelöscht am', str(x))
@@ -55,7 +55,7 @@ def löschen():
 
 
 while True:
-    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+    cfg.read('/home/pi/config_dateien/benutzer.ini')
     if GPIO.input(40) == 0:
         time.sleep(1)
         speichern()

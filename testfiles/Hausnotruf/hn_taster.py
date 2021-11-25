@@ -3,6 +3,13 @@ from twilio.rest import Client
 import time
 from datetime import datetime
 import hn_tagestaste
+import configparser
+
+import sys                                                          #Twilio Anmeldedaten einbinden
+sys.path.insert(1,"/home/pi/config_dateien")
+from twilio_anmeldung import auth_token, account_sid, FROM, TO
+
+cfg = configparser.ConfigParser()
 
 #Timestamp
 x = datetime.now()
@@ -17,19 +24,13 @@ if GPIO.input(26) == 0:
     hn_tagestaste.countdown.exit()
     hn_tagestaste.countdown(int(t))
 
-# Einrichtung SMS
-account_sid = "AC3b9a640bf840e9f26596a841e249f686"
-auth_token = "434dd84cb2c80899756e26bcfac488e5"
-FROM= '+12674592798'
-TO= '+4915770217327'
-
 #Alarm + SMS auslösen
 def alarm():
-    print("!!!Hausnotruf ALARM!!!\n"+str(x))
-    Client(account_sid, auth_token).messages.create(
-        body= "\n!!!Hausnotruf ALARM!!!\n"+str(x),
+    print("!!!Hausnotruf ALARM!!!\n"+"um "+str(x.hour)+":"+str(x.minute)+" Uhr")
+    """Client(account_sid, auth_token).messages.create(
+        body= "\n!!!Hausnotruf ALARM!!!\n"+"am "+str(x.date),
         to= TO,
-        from_= FROM)
+        from_= FROM)"""
     time.sleep(10)
 
 # Endlosschleife Button press ruft Alarm-Funktion auf
