@@ -1,11 +1,9 @@
-import sys
 import RPi.GPIO as GPIO
 import time
 from mfrc522 import SimpleMFRC522
 import configparser
 from datetime import datetime
 cfg = configparser.ConfigParser()
-sys.path.insert(1, "/home/pi/config_dateien")
 
 reader = SimpleMFRC522()
 
@@ -20,7 +18,7 @@ def speichern():
     if cfg.has_section(str(id)) == True:
         print("Karte bekannt")
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'gestattet')
         x = datetime.now()
         cfg.set(str(id), 'gespeichert am', str(x))
@@ -30,7 +28,7 @@ def speichern():
     else:
         print("Karte unbekannt")
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.add_section(str(id))
         cfg.set(str(id), 'zugang', 'gestattet')
         x = datetime.now()
@@ -45,7 +43,7 @@ def löschen():
     print(cfg.has_section(str(id)))
     if cfg.has_section(str(id)) == True:
         cfgfile = open(
-            "/home/pi/interoperabilitaet/config_dateien/benutzer.ini", 'w')
+            "/home/pi/config_dateien/benutzer.ini", 'w')
         cfg.set(str(id), 'zugang', 'verweigert')
         x = datetime.now()
         cfg.set(str(id), 'gelöscht am', str(x))
@@ -57,7 +55,7 @@ def löschen():
 
 
 while True:
-    cfg.read('/home/pi/interoperabilitaet/config_dateien/benutzer.ini')
+    cfg.read('/home/pi/config_dateien/benutzer.ini')
     if GPIO.input(40) == 0:
         time.sleep(1)
         speichern()
