@@ -1,5 +1,5 @@
 import time                                             #für time.sleep
-import hn_taster as taster                             #hn_taster importieren
+import hn_taster                                        #hn_taster importieren
 
 t = 46800                                               # 13h in Sekunden
 
@@ -10,5 +10,5 @@ def countdown(t):                                       #13h countdown
             print(timer, end="\r")
             time.sleep(1)
             t -= 1
-        taster.alarm()                                     #Alarmfunktion aus hn_taster ausführen
+        hn_taster.alarm()                                  #Alarmfunktion aus hn_taster ausführen
 
