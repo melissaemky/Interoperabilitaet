@@ -31,7 +31,7 @@ def alarm():
         body= "\n!!!Hausnotruf ALARM!!!\n"+str(x),
         to= TO,
         from_= FROM)
-    time.sleep(10)
+    #time.sleep(10)
 
 # Endlosschleife Button press ruft Alarm-Funktion auf
 while True:
