@@ -21,6 +21,3 @@ def tuerauf():
         p.ChangeDutyCycle(5)
     print("Tür ist geöffnet!")
     time.sleep(2)
-
-
-tuerzu()
