@@ -20,6 +20,7 @@ while True:
         try:
             id, text = reader.read()
             print(id)
+            cfg.read('/home/pi/config_dateien/benutzer.ini')
             if cfg.has_section(str(id)) == True:
                 tuerauf
             else:
