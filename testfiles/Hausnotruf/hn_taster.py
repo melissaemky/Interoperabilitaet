@@ -28,7 +28,7 @@ if GPIO.input(26) == 0:
 def alarm():
     print("!!!Hausnotruf ALARM!!!\n"+"um "+str(x.hour)+":"+str(x.minute)+" Uhr")
     Client(account_sid, auth_token).messages.create(
-        body= "\n!!!Hausnotruf ALARM!!!\n"+"am "+str(x.date),
+        body= "\n!!!Hausnotruf ALARM!!!\n"+"um "+str(x.hour)+":"+str(x.minute)+" Uhr",
         to= TO,
         from_= FROM)
     time.sleep(10)
