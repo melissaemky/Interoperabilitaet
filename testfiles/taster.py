@@ -3,7 +3,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN)  # Grüner Taster(Speichern)
-GPIO.setup(20, GPIO.IN)  # Blauer Taser(Speichern)
+GPIO.setup(20, GPIO.IN)  # Blauer Taser(Löschen)
 
 while True:
     if GPIO.input(21) == 0:
