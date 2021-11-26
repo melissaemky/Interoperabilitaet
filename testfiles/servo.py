@@ -6,7 +6,7 @@ if uni == 1:
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(servoPIN, GPIO.OUT)
     p = GPIO.PWM(servoPIN, 50)  # GPIO 12 als PWM mit 50Hz
-    p.start(2.5)  # Initialisierung
+    p.start(10)  # Initialisierung
 
 
 def tuerzu():
