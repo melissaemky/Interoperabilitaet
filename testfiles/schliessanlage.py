@@ -17,13 +17,11 @@ while True:
     if GPIO.input(38) == 0 or GPIO.input(40) == 0:
         time.sleep(30)
     else:
-        try:
-            id, text = reader.read()
-            print(id)
-            cfg.read('/home/pi/config_dateien/benutzer.ini')
-            if cfg.has_section(str(id)) == True:
-                tuerauf()
-            else:
-                tuerzu()
-        finally:
-            GPIO.cleanup()
+        id, text = reader.read()
+        print(id)
+        cfg.read('/home/pi/config_dateien/benutzer.ini')
+        if cfg.has_section(str(id)) == True:
+            tuerauf()
+        else:
+            tuerzu()
+    GPIO.cleanup()
