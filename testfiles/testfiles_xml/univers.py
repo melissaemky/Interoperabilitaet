@@ -1,5 +1,6 @@
 # Import required library
 import xml.etree.ElementTree as xml
+x = "Test"
 
 
 def createXML(filename):
@@ -8,7 +9,7 @@ def createXML(filename):
     users = xml.Element("users")
     root.append(users)
     id = xml.SubElement(users, "id")
-    id.text = "ID"
+    id.text = x
     zugang = xml.SubElement(id, "zugang")
     zugang.text = "JA/NEIN"
     am = xml.SubElement(id, "am")
