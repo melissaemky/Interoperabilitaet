@@ -12,8 +12,9 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
-dictionary = ET.Element("dictionary")
+ET = ET.ElementTree
 ET.write("/home/pi/config_dateien/univers.xml")
+dictionary = ET.Element("dictionary")
 benutzer = ET.SubElement(dictionary, "benutzer")
 id = ET.SubElement(benutzer, "id", {"typ": "int"})
 zugang = ET.SubElement(id, "zugang", {"typ": "text"})
