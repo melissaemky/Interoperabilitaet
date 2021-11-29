@@ -3,8 +3,8 @@ import time
 from mfrc522 import SimpleMFRC522
 from datetime import datetime
 import xml.etree.ElementTree as ET
-tree = ET.parse('univers.xml')
-root = tree.getroot()
+#tree = ET.parse('univers.xml')
+#root = tree.getroot()
 
 reader = SimpleMFRC522()
 
@@ -12,33 +12,33 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
+ET = ET.ElementTree
+ET.write("univers.xml")
+dictionary = ET.Element("dictionary")
+benutzer = ET.SubElement(dictionary, "benutzer")
+id = ET.SubElement(benutzer, "id", {"typ": "int"})
+zugang = ET.SubElement(id, "zugang", {"typ": "text"})
+am = ET.SubElement(id, "am", {"typ": "yyyy-MM-ddTHH:mm:ss.fffK"})
+
 
 def speichern():
     id, text = reader.read()
-    print(root.benutzer(str(id)))
-    if root.benutzer(str(id)) == True:
+    if id == True:
         print("Karte bekannt")
-        cfgfile = open(
-            "/home/pi/config_dateien/benutzer.ini", 'w')
-        cfg.set(str(id), 'zugang', 'gestattet')
-        x = datetime.now()
-        cfg.set(str(id), 'gespeichert am', str(x))
-        cfg.write(cfgfile)
-        cfgfile.close()
-        print(str(id) + " Zugang gestattet")
+        zugang.set("gestattet", "gestattet")
+        am.set("...", "...")
+        print(id)
     else:
         print("Karte unbekannt")
-        cfgfile = open(
-            "/home/pi/config_dateien/benutzer.ini", 'w')
-        cfg.add_section(str(id))
-        cfg.set(str(id), 'zugang', 'gestattet')
-        x = datetime.now()
-        cfg.set(str(id), 'gespeichert am', str(x))
-        cfg.write(cfgfile)
-        cfgfile.close()
-        print(str(id) + " gespeichert und Zugang gestattet")
+        id = ET.SubElement(benutzer, "id", {"typ": "int"})
+        #zugang = ET.SubElement(id, "zugang", {"typ":"text"})
+        #am = ET.SubElement(id, "am", {"typ":"yyyy-MM-ddTHH:mm:ss.fffK"})
+        zugang.set("gestattet", "gestattet")
+        am.set("...", "...")
+        print(id)
 
 
+'''
 def löschen():
     id, text = reader.read()
     print(cfg.has_section(str(id)))
@@ -53,10 +53,10 @@ def löschen():
         print(str(id) + " Zugang verweigert")
     else:
         print("Karte noch nie gespeichert!")
+'''
 
 
 while True:
-    cfg.read('/home/pi/config_dateien/benutzer.ini')
     if GPIO.input(40) == 0:
         time.sleep(1)
         speichern()
