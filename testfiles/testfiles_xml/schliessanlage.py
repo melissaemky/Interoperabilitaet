@@ -5,8 +5,8 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 from servo import tuerauf, tuerzu
 import xml.etree.ElementTree as ET
-tree = ET.parse('univers.xml')
-root = tree.getroot()
+#tree = ET.parse('univers.xml')
+#root = tree.getroot()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
