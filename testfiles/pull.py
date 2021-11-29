@@ -9,5 +9,3 @@ GPIO.setup(26, GPIO.IN)
 while True:
     if GPIO.input(26) == 0:
         os.system("git pull")
-
-        test
