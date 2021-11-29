@@ -21,7 +21,7 @@ am = ET.SubElement(id, "am", {"typ": "yyyy-MM-ddTHH:mm:ss.fffK"})
 
 def speichern():
     id, text = reader.read()
-    for id in benutzer == True:
+    for id in benutzer:
         print("Karte bekannt")
         zugang.set("gestattet")
         am.set("...")
