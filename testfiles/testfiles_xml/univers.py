@@ -20,4 +20,4 @@ def createXML(filename):
 
 
 if __name__ == "__main__":
-    createXML("testXML.xml")
+    createXML("/home/pi/config_dateien/univers.xml")
