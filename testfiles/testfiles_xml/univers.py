@@ -16,7 +16,7 @@ def createXML(filename):
 
     tree = xml.ElementTree(root)
     with open(filename, "wb") as fh:
-    tree.write(fh)
+        tree.write(fh)
 
 
 if __name__ == "__main__":
