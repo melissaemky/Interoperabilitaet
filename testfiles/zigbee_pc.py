@@ -9,8 +9,8 @@ state = (body["state"]["presence"])
 print(state)
 '''
 
-def steckdose():
-    response = requests.put('http://192.168.8.215/api/C0CEFA0EB7/lights/2/state',data = '{ "on": false }')
+def steckdose(state):
+    response = requests.put('http://192.168.8.215/api/C0CEFA0EB7/lights/2/state',data = '{ "on": '+ state +'}')
     print(response)
 
-steckdose()
+steckdose("false")
