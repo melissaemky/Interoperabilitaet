@@ -24,7 +24,7 @@ def speichern():
     for id in benutzer:
         print("Karte bekannt")
         zugang.set("gestattet", "gestattet")
-        am.set("...")
+        am.set("...", "...")
         print(id + " Zugang gestattet")
     else:
         print("Karte unbekannt")
