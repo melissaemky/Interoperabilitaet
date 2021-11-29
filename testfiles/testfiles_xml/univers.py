@@ -4,15 +4,15 @@ import xml.etree.ElementTree as xml
 
 def createXML(filename):
     # Start with the root element
-    root = xml.Element("users")
-    children1 = xml.Element("user")
-    root.append(children1)
-
-    userId1 = xml.SubElement(children1, "Id")
-    userId1.text = "hello"
-
-    userName1 = xml.SubElement(children1, "Name")
-    userName1.text = "Rajesh"
+    root = xml.Element("groot")
+    users = xml.Element("users")
+    root.append(users)
+    id = xml.SubElement(users, "id")
+    id.text = "ID"
+    zugang = xml.SubElement(id, "zugang")
+    zugang.text = "JA/NEIN"
+    am = xml.SubElement(id, "am")
+    am.text = "Datum"
 
     tree = xml.ElementTree(root)
     with open(filename, "wb") as fh:
