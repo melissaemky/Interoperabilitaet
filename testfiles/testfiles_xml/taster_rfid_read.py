@@ -25,7 +25,7 @@ def speichern():
         print("Karte bekannt")
         zugang.set("gestattet", "gestattet")
         am.set("...", "...")
-        print(id + " Zugang gestattet")
+        print(id)
     else:
         print("Karte unbekannt")
         id = ET.SubElement(benutzer, "id", {"typ": "int"})
