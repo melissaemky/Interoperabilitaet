@@ -3,7 +3,8 @@ import time
 from mfrc522 import SimpleMFRC522
 from datetime import datetime
 import xml.etree.ElementTree as ET
-#tree = ET.parse('univers.xml')
+from xml.dom import minidom
+#tree = ET.parse('/home/pi/config_dateien/univers.xml')
 #root = tree.getroot()
 
 reader = SimpleMFRC522()
@@ -12,6 +13,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
+'''
 ET = ET.ElementTree
 ET.write("univers.xml")
 dictionary = ET.Element("dictionary")
@@ -20,9 +22,45 @@ id = ET.SubElement(benutzer, "id", {"typ": "int"})
 zugang = ET.SubElement(id, "zugang", {"typ": "text"})
 am = ET.SubElement(id, "am", {"typ": "yyyy-MM-ddTHH:mm:ss.fffK"})
 
+def speichern():
+    id, text = reader.read()
+    if id == True:
+        print("Karte bekannt")
+        zugang.set("gestattet", "gestattet")
+        am.set("...", "...")
+        print(id)
+    else:
+        print("Karte unbekannt")
+        id = ET.SubElement(benutzer, "id", {"typ": "int"})
+        #zugang = ET.SubElement(id, "zugang", {"typ":"text"})
+        #am = ET.SubElement(id, "am", {"typ":"yyyy-MM-ddTHH:mm:ss.fffK"})
+        zugang.set("gestattet", "gestattet")
+        am.set("...", "...")
+        print(id)
+'''
+
+
+def updateET(filename):
+    # Start with the root element
+    tree = ET.ElementTree(file=filename)
+    root = tree.getroot()
+
+    for users in root.iter("users"):
+        users.__str__ = str(x)
+
+    tree = ET.ElementTree(root)
+    with open("newdata.xml", "wb") as fh:
+        tree.write(fh)
+
+
+if __name__ == "__main__":
+    updateET("newdata.xml")
+
 
 def speichern():
     id, text = reader.read()
+    XMLDatei = minidom.parse("univers.xml")
+    XMLDatei.getElementsByTagName("users")
     if id == True:
         print("Karte bekannt")
         zugang.set("gestattet", "gestattet")
