@@ -13,7 +13,7 @@ GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
 ET = ET.ElementTree
-ET.write("/home/pi/config_dateien/univers.xml")
+ET.write("univers.xml")
 dictionary = ET.Element("dictionary")
 benutzer = ET.SubElement(dictionary, "benutzer")
 id = ET.SubElement(benutzer, "id", {"typ": "int"})
