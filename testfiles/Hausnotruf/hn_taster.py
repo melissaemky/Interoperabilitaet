@@ -37,4 +37,3 @@ def alarm():
 while True:
     if GPIO.input(36) == 0:
         alarm()
-    
