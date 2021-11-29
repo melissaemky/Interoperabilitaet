@@ -14,9 +14,9 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
 dictionary = ET.Element("dictionary")
 benutzer = ET.SubElement(dictionary, "benutzer")
-id = ET.SubElement(benutzer, "id", {"typ": "int"})
-zugang = ET.SubElement(id, "zugang", {"typ": "text"})
-am = ET.SubElement(id, "am", {"typ": "yyyy-MM-ddTHH:mm:ss.fffK"})
+id = ET.SubElement(benutzer, "id", {"int"})
+zugang = ET.SubElement(id, "zugang", {"text"})
+am = ET.SubElement(id, "am", {"yyyy-MM-ddTHH:mm:ss.fffK"})
 
 
 def speichern():
