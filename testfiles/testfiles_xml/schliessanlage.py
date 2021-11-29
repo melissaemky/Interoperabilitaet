@@ -4,8 +4,9 @@ import time
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 from servo import tuerauf, tuerzu
-import configparser
-cfg = configparser.ConfigParser()
+import xml.etree.ElementTree as ET
+tree = ET.parse('univers.xml')
+root = tree.getroot()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
@@ -19,7 +20,7 @@ while True:
     else:
         id, text = reader.read()
         print(id)
-        cfg.read('/home/pi/config_dateien/benutzer.ini')
+        root('/home/pi/config_dateien/univers.xml')
         if cfg.has_section(str(id)) == True:
             tuerauf()
         else:
