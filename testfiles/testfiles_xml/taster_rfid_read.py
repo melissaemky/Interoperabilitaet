@@ -31,9 +31,9 @@ def speichern():
         id = ET.SubElement(benutzer, "id", {"typ": "int"})
         #zugang = ET.SubElement(id, "zugang", {"typ":"text"})
         #am = ET.SubElement(id, "am", {"typ":"yyyy-MM-ddTHH:mm:ss.fffK"})
-        zugang.set("gestattet")
-        am.set("...")
-        print(id + " gespeichert und Zugang gestattet")
+        zugang.set("gestattet", "gestattet")
+        am.set("...", "...")
+        print(id)
 
 
 '''
