@@ -9,3 +9,5 @@ GPIO.setup(26, GPIO.IN)  # Grüner Taster(Speichern)
 while True:
     if GPIO.input(26) == 0:
         os.system("git pull")
+
+        test
