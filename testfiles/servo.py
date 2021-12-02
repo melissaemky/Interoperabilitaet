@@ -21,3 +21,9 @@ def tuerauf():
         p.ChangeDutyCycle(5)
     print("Tür ist geöffnet!")
     time.sleep(2)
+
+def test(winkel):
+    if uni == 1:
+    p.ChangeDutyCycle(5)
+    print("Tür ist geöffnet!")
+    time.sleep(2)
