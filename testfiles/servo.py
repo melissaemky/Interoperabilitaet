@@ -5,6 +5,7 @@ if uni == 1:
     servoPIN = 12
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(servoPIN, GPIO.OUT)
+    GPIO.setwarnings(False)
     p = GPIO.PWM(servoPIN, 50)  # GPIO 12 als PWM mit 50Hz
     p.start(10)  # Initialisierung
 
