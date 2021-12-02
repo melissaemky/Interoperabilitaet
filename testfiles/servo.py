@@ -28,5 +28,5 @@ def test(winkel):
         p.ChangeDutyCycle(winkel)
         time.sleep(2)
     print(winkel)
-    GPIO.cleanup()
+    #GPIO.cleanup()
     
