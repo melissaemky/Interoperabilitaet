@@ -45,7 +45,7 @@ variables = xml.find('users')
 for elems in variables.findall('id'):
     id = elems
     for elem in id.findall("Zugang"):
-        print elem.tag, elem.text
+        print(elem.tag, elem.text)
 
 '''
 def updateET(filename):
