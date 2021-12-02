@@ -25,5 +25,6 @@ def tuerauf():
 def test(winkel):
     if uni == 1:
         p.ChangeDutyCycle(5)
+        time.sleep(2)
     print(winkel)
-    time.sleep(2)
+    
