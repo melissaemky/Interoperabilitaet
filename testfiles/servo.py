@@ -26,3 +26,4 @@ def test(winkel):
     if uni == 1:
         p.ChangeDutyCycle(5)
     print(winkel)
+    time.sleep(2)
