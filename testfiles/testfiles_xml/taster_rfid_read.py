@@ -39,7 +39,15 @@ def speichern():
         print(id)
 '''
 
+# hier den Pfad des XML-Files eingeben
+xml = ET.parse(open("C:\/home/pi/config_dateien/univers.xml", 'r'))
+variables = xml.find('users')
+for elems in variables.findall('id'):
+    id = elems
+    for elem in id.findall("Zugang"):
+        print elem.tag, elem.text
 
+'''
 def updateET(filename):
     # Start with the root element
     tree = ET.ElementTree(file=filename)
@@ -69,12 +77,12 @@ def speichern():
     else:
         print("Karte unbekannt")
         id = ET.SubElement(benutzer, "id", {"typ": "int"})
-        #zugang = ET.SubElement(id, "zugang", {"typ":"text"})
-        #am = ET.SubElement(id, "am", {"typ":"yyyy-MM-ddTHH:mm:ss.fffK"})
+        zugang = ET.SubElement(id, "zugang", {"typ": "text"})
+        am = ET.SubElement(id, "am", {"typ": "yyyy-MM-ddTHH:mm:ss.fffK"})
         zugang.set("gestattet", "gestattet")
         am.set("...", "...")
         print(id)
-
+'''
 
 '''
 def löschen():
