@@ -101,7 +101,7 @@ def löschen():
         print("Karte noch nie gespeichert!")
 '''
 
-
+'''
 while True:
     if GPIO.input(40) == 0:
         time.sleep(1)
@@ -109,3 +109,4 @@ while True:
     if GPIO.input(38) == 0:
         time.sleep(1)
         löschen()
+'''
