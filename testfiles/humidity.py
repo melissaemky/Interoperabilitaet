@@ -97,9 +97,9 @@ class CurrentValues():
         return cls(round(data[1]/100.0 - 273.15, 2), data[3]/100.0, data[4])
 
     def __str__(self):
-        msg = "'Temperature': '{}', ".format(self.temperature)
-        msg += "'Humidity': '{}', ".format(self.humidity)
-        msg += "'VOC': '{}'".format(self.voc)
+        msg = '"Temperature": "{}", '.format(self.temperature)
+        msg += '"Humidity": "{}", '.format(self.humidity)
+        msg += '"VOC": "{}"'.format(self.voc)
         return msg
 
 
