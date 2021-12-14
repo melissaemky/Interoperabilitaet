@@ -22,7 +22,6 @@
 #
 # https://airthings.com
 
-from _typeshed import Self
 import bluepy.btle as btle
 import argparse
 import signal
@@ -76,7 +75,6 @@ class WaveMini():
 
     def read(self):
         rawdata = self._char.read()
-        #print(self.temperature)  
         return CurrentValues.from_bytes(rawdata)
 
     def disconnect(self):
@@ -142,7 +140,7 @@ def _main():
 
     while True:
         wavemini.connect(retries=3)
-        print(wavemini.read())   
+        print(wavemini.read())     
         wavemini.disconnect()
         time.sleep(args.SAMPLE_PERIOD)
 
