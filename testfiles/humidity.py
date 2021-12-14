@@ -141,7 +141,7 @@ def _main():
         temp = (x['sensoren'][0]["messwert"])
         print(temp)
         x["sensoren"][0]["messwert"] = temp+66
-        with open("test.json", 'w') as json_file:
+        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
             json.dump(x, json_file, indent=4)
         
         wavemini.disconnect()
