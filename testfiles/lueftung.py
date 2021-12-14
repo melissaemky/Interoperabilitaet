@@ -1,6 +1,6 @@
 import time
 import RPi.GPIO as GPIO
-from humidity import read as Sensor
+from humidity import read(self) as Sensor
 servoPIN = 12
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(servoPIN, GPIO.OUT)
