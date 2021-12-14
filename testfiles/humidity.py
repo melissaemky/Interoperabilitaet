@@ -136,14 +136,14 @@ def _main():
         messwerte = str(wavemini.read())    
         wavemini.disconnect()
 
-        print(messwerte[13:17])
-        '''
+        temperatur = messwerte[13:17])
+        
         with open ("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
-        x["sensoren"][0]["messwert"] = self.temperature
+        x["sensoren"][0]["messwert"] = temperatur
         with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
             json.dump(x, json_file, indent=4)
-        '''
+        
         time.sleep(args.SAMPLE_PERIOD)
 
 
