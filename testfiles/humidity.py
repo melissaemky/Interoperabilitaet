@@ -97,10 +97,17 @@ class CurrentValues():
         return cls(round(data[1]/100.0 - 273.15, 2), data[3]/100.0, data[4])
 
     def __str__(self):
-        msg = 'Temperature: {}, '.format(self.temperature)
+        #msg = 'Temperature: {}, '.format(self.temperature)
         #msg += '"Humidity": "{}", '.format(self.humidity)
         #msg += '"VOC": "{}"'.format(self.voc)
-        return msg
+        
+        with open ("/home/pi/config_dateien/universe.json") as json_file:
+            x = json.load(json_file)
+        x["sensoren"][0]["messwert"] = self.temperature
+        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
+            json.dump(x, json_file, indent=4)
+
+        #return msg
 
 
 def _parse_serial_number(manufacturer_data):
@@ -133,19 +140,7 @@ def _main():
 
     while True:
         wavemini.connect(retries=3)
-        current_values = wavemini.read()
-        print(current_values)
-        d = json.loads(current_values)
-        print(d)
-        
-        with open ("/home/pi/config_dateien/universe.json") as json_file:
-            x = json.load(json_file)
-        temp = (x['sensoren'][0]["messwert"])
-        print(temp)
-        x["sensoren"][0]["messwert"] = temp
-        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
-            json.dump(x, json_file, indent=4)
-        
+        wavemini.read()     
         wavemini.disconnect()
         time.sleep(args.SAMPLE_PERIOD)
 
