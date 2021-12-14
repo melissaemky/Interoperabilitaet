@@ -137,8 +137,8 @@ def _main():
         print(messwerte)
         wavemini.disconnect()
 
-        temperatur = messwerte[13:17]
-        luftfeuchte = messwerte[34:38]
+        temperatur = messwerte[13:18]
+        luftfeuchte = messwerte[35:40]
         voc = messwerte[50:52]
         
         with open ("/home/pi/config_dateien/universe.json") as json_file:
