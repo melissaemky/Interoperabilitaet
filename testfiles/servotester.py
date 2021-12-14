@@ -1,3 +1,3 @@
 import servo
 
-servo.test(1)
+servo.test(10)
