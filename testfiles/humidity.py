@@ -135,8 +135,7 @@ def _main():
         wavemini.connect(retries=3)
         messwerte = (wavemini.read())    
         wavemini.disconnect()
-        d = json.loads(messwerte)
-        print(d)
+        print(messwerte[0])
         '''
         with open ("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
