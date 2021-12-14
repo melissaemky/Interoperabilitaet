@@ -11,7 +11,7 @@ print(state)
 zustand="true"
 
 def steckdose(state, id):
-    response = requests.put('http://192.168.0.198/api/C0CEFA0EB7/lights/'+ str(id) +'/state', data = '{ "on": '+ zustand +' }')
+    response = requests.put('http://192.168.8.215/api/C0CEFA0EB7/lights/'+ str(id) +'/state', data = '{ "on": '+ zustand +' }')
     print(response)
 
 steckdose(zustand,2)
