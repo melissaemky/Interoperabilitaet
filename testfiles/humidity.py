@@ -97,9 +97,9 @@ class CurrentValues():
         return cls(round(data[1]/100.0 - 273.15, 2), data[3]/100.0, data[4])
 
     def __str__(self):
-        msg = "Temperature: {} *C, ".format(self.temperature)
-        msg += "Humidity: {} %rH, ".format(self.humidity)
-        msg += "VOC: {} ppm".format(self.voc)
+        msg = 'Temperature: {}, '.format(self.temperature)
+        msg += '"Humidity": "{}", '.format(self.humidity)
+        msg += '"VOC": "{}"'.format(self.voc)
         return msg
 
 
@@ -133,17 +133,22 @@ def _main():
 
     while True:
         wavemini.connect(retries=3)
-        current_values = wavemini.read()
-        print(current_values)
+        messwerte = str(wavemini.read())    
+        print(messwerte)
+        wavemini.disconnect()
+
+        temperatur = messwerte[13:18]
+        luftfeuchte = messwerte[33:38]
+        voc = messwerte[49:52]
         
         with open ("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
-        temp = (x['sensoren'][0]["messwert"])
-        x["sensoren"][0]["messwert"]=current_values
-        with open("test.json", 'w') as json_file:
+        x["sensoren"][0]["messwert"] = temperatur
+        x["sensoren"][1]["messwert"] = luftfeuchte
+        x["sensoren"][2]["messwert"] = voc
+        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
             json.dump(x, json_file, indent=4)
         
-        wavemini.disconnect()
         time.sleep(args.SAMPLE_PERIOD)
 
 
