@@ -2,7 +2,7 @@ import json
 
 # Write json to a file
 sensor = {"name": "Bob",
-               "languages": ["English", "Fench"],
+               "languages": ["English": 1, "Fench"],
                "married": True,
                "age": 32
                }
