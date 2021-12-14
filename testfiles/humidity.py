@@ -75,7 +75,6 @@ class WaveMini():
 
     def read(self):
         rawdata = self._char.read()
-        print(self.temperature)
         return CurrentValues.from_bytes(rawdata)
 
     def disconnect(self):
@@ -101,13 +100,6 @@ class CurrentValues():
         msg = 'Temperature: {}, '.format(self.temperature)
         msg += '"Humidity": "{}", '.format(self.humidity)
         msg += '"VOC": "{}"'.format(self.voc)
-        '''
-        with open ("/home/pi/config_dateien/universe.json") as json_file:
-            x = json.load(json_file)
-        x["sensoren"][0]["messwert"] = self.temperature
-        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
-            json.dump(x, json_file, indent=4)
-        '''
         return msg
 
 
@@ -143,6 +135,13 @@ def _main():
         wavemini.connect(retries=3)
         print(wavemini.read())     
         wavemini.disconnect()
+        '''
+        with open ("/home/pi/config_dateien/universe.json") as json_file:
+            x = json.load(json_file)
+        x["sensoren"][0]["messwert"] = self.temperature
+        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
+            json.dump(x, json_file, indent=4)
+        '''
         time.sleep(args.SAMPLE_PERIOD)
 
 
