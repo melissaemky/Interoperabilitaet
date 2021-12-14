@@ -134,6 +134,7 @@ def _main():
     while True:
         wavemini.connect(retries=3)
         messwerte = str(wavemini.read())    
+        print(messwerte)
         wavemini.disconnect()
 
         temperatur = messwerte[13:17]
