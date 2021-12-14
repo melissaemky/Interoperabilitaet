@@ -137,10 +137,14 @@ def _main():
         wavemini.disconnect()
 
         temperatur = messwerte[13:17]
+        luftfeuchte = messwerte[34:38]
+        voc = messwerte[50:52]
         
         with open ("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
         x["sensoren"][0]["messwert"] = temperatur
+        x["sensoren"][1]["messwert"] = luftfeuchte
+        x["sensoren"][2]["messwert"] = voc
         with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
             json.dump(x, json_file, indent=4)
         
