@@ -1,6 +1,6 @@
 import time
 import RPi.GPIO as GPIO
-from humidity import read(self) as Sensor
+import humidity
 servoPIN = 12
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(servoPIN, GPIO.OUT)
@@ -24,4 +24,4 @@ if (luftquaität < richtwert):
     time.sleep(30)
 else: luefteraus()
 """
-print (Sensor())
+print (read())
