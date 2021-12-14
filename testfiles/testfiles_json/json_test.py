@@ -1,11 +1,25 @@
 import json
 
-# Write json to a file
-sensor = {"name": "Bob",
-               "languages": ["English": 1, "Fench"],
-               "married": True,
-               "age": 32
-               }
+"""
+x = {
+  "sensoren": [
+    {"id": "0", "typ": "temperatur", "messwert": 20},
+    {"id": "1", "typ": "luftfeuchte", "messwert": 24.1}
+  ]
+}
 
-with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
-    json.dump(sensor, json_file)
+#print(json.dumps(x,))
+
+with open("test.json", 'w') as json_file:
+    json.dump(x, json_file, indent=4)
+
+"""
+with open ("test.json") as json_file:
+    x = json.load(json_file)
+    temp = (x['sensoren'][0]["messwert"])
+    print(temp)
+    x["sensoren"][0]["messwert"]=temp+1
+
+with open("test.json", 'w') as json_file:
+    json.dump(x, json_file, indent=4)
+

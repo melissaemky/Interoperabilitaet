@@ -1,0 +1,14 @@
+{
+    "sensoren": [
+        {
+            "id": "0",
+            "typ": "temperatur",
+            "messwert": 21
+        },
+        {
+            "id": "1",
+            "typ": "luftfeuchte",
+            "messwert": 24.1
+        }
+    ]
+}
