@@ -76,7 +76,7 @@ class WaveMini():
 
     def read(self):
         rawdata = self._char.read()
-        print(self.temperature)  
+        #print(self.temperature)  
         return CurrentValues.from_bytes(rawdata)
 
     def disconnect(self):
