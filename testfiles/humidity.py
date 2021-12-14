@@ -140,7 +140,7 @@ def _main():
             x = json.load(json_file)
         temp = (x['sensoren'][0]["messwert"])
         print(temp)
-        x["sensoren"][0]["messwert"] = temp+66
+        x["sensoren"][0]["messwert"] = temp
         with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
             json.dump(x, json_file, indent=4)
         
