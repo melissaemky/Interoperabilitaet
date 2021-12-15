@@ -52,7 +52,7 @@ while True:
                                     if zustand == "0":
                                         # kann später weg
                                         print("Tür war zu, wird geöffnet")
-                                        tuerzu()
+                                        tuerauf()
                                         # Zustand "Türauf"
                                         (x['aktoren'][k]['zustand']) = "1"
                                         # Neuen Zustand speichern
@@ -61,7 +61,7 @@ while True:
                                     else:
                                         # kann später weg
                                         print("Tür war auf, wird geschlossen")
-                                        tuerauf()
+                                        tuerzu()
                                         # Zustand "Türzu"
                                         (x['aktoren'][k]['zustand']) = "0"
                                         # Neuen Zustand speichern
