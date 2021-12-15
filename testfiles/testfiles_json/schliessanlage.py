@@ -22,6 +22,7 @@ while True:
 
         with open("/home/pi/config_dateien/universetest.json") as json_file:
             x = json.load(json_file)
+            print("Json geöffnet")
             '''
             lk = len(x['karten'])
             lb = len(x['benutzer'])
