@@ -3,7 +3,7 @@
 import time
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
-from servo import tuerauf, tuerzu
+from servo import tuerauf, tuerzu, tuerini
 import json
 
 
@@ -63,6 +63,7 @@ while True:
                                     if zustand == "0":
                                         # kann später weg
                                         print("Tür war zu, wird geöffnet")
+                                        tuerini()
                                         tuerauf()
                                         # Zustand "Türauf"
                                         (x['aktoren'][k]['zustand']) = "1"
@@ -72,6 +73,7 @@ while True:
                                     else:
                                         # kann später weg
                                         print("Tür war auf, wird geschlossen")
+                                        tuerini()
                                         tuerzu()
                                         # Zustand "Türzu"
                                         (x['aktoren'][k]['zustand']) = "0"
