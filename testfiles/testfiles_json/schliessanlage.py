@@ -18,7 +18,7 @@ while True:
         time.sleep(30)  # Hier fehlt noch speichern und löschen
     else:
         id, text = reader.read()
-        print("Karte gelesen" + str(id))
+        print("Karte gelesen " + str(id))
 
         with open("/home/pi/config_dateien/universetest.json") as json_file:
             x = json.load(json_file)
@@ -31,10 +31,8 @@ while True:
             kartennummer = (x['karten'][i]['kartennummer'])
             print(str(i) + "te Kartennummer " +
                   str(kartennummer))  # kann später weg
-            print(type(id))
-            print(type(kartennummer))
-            if kartennummer == id:
-                print("in der if abfrage")  # kann später weg
+            if kartennummer == str(id):
+                print("if abfrage ist wahr")  # kann später weg
                 kartenid = (x['karten'][i]['id'])
                 print("Kartennummer gefunden")  # kann später weg
                 for j in range(0, lb):
