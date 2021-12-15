@@ -22,47 +22,46 @@ while True:
 
         with open("/home/pi/config_dateien/universetest.json") as json_file:
             x = json.load(json_file)
-            print("Json geöffnet")
-            '''
-            lk = len(x['karten'])
-            lb = len(x['benutzer'])
-            la = len(x['aktoren'])
-            for i in range(0, lk):
-                kartennummer = (x['karten'][i]['kartennummer'])
-                if kartennummer == id:
-                    kartenid = (x['karten'][i]['id'])
-                    print("Kartennummer gefunden")
-                    for j in range(0, lb):
-                        benutzerkarte = (x['benutzer'][j]['kartenid'])
-                        if kartenid == benutzerkarte:
-                            zugang = (x['benutzer'][j]['zugang'])
-                            print("Benutzer gefunden")
-                            if zugang == "ja":
-                                print("Zugang: ja")
-                                for k in range(0, la):
-                                    aktor = (x['aktoren'][k]['typ'])
-                                    if aktor == "haustür":
-                                        print("Haustür gefunden")
-                                        zustand = (x['aktoren'][k]['zustand'])
-                                        if zustand == "0":
-                                            print("Tür war zu, wird geöffnet")
-                                            tuerauf()
-                                            # Zustand "Türauf"
-                                            (x['aktoren'][k]['zustand']) = "1"
-                                            # Neuen Zustand speichern
-                                            with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
-                                                json.dump(
-                                                    x, json_file, indent=4)
-                                        else:
-                                            print(
-                                                "Tür war auf, wird geschlossen")
-                                            tuerzu()
-                                            # Zustand "Türzu"
-                                            (x['aktoren'][k]['zustand']) = "0"
-                                            # Neuen Zustand speichern
-                                            with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
-                                                json.dump(
-                                                    x, json_file, indent=4)
+        print("Json geladen")  # kann später weg
+        lk = len(x['karten'])
+        lb = len(x['benutzer'])
+        la = len(x['aktoren'])
+        for i in range(0, lk):
+            kartennummer = (x['karten'][i]['kartennummer'])
+            if kartennummer == id:
+                kartenid = (x['karten'][i]['id'])
+                print("Kartennummer gefunden")  # kann später weg
+                for j in range(0, lb):
+                    benutzerkarte = (x['benutzer'][j]['kartenid'])
+                    if kartenid == benutzerkarte:
+                        zugang = (x['benutzer'][j]['zugang'])
+                        print("Benutzer gefunden")  # kann später weg
+                        if zugang == "ja":
+                            print("Zugang: ja")  # kann später weg
+                            for k in range(0, la):
+                                aktor = (x['aktoren'][k]['typ'])
+                                if aktor == "haustür":
+                                    # kann später weg
+                                    print("Haustür gefunden")
+                                    zustand = (x['aktoren'][k]['zustand'])
+                                    if zustand == "0":
+                                        # kann später weg
+                                        print("Tür war zu, wird geöffnet")
+                                        tuerauf()
+                                        # Zustand "Türauf"
+                                        (x['aktoren'][k]['zustand']) = "1"
+                                        # Neuen Zustand speichern
+                                        with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                                            json.dump(x, json_file, indent=4)
+                                    else:
+                                        # kann später weg
+                                        print("Tür war auf, wird geschlossen")
+                                        tuerzu()
+                                        # Zustand "Türzu"
+                                        (x['aktoren'][k]['zustand']) = "0"
+                                        # Neuen Zustand speichern
+                                        with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                                            json.dump(
+                                                x, json_file, indent=4)
 
     GPIO.cleanup()
-'''
