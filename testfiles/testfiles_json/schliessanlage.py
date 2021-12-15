@@ -29,8 +29,10 @@ while True:
         for i in range(0, lk):
             print("in der for schleife")  # kann später weg
             kartennummer = (x['karten'][i]['kartennummer'])
-            print(str(i) + "te Kartennummer" +
+            print(str(i) + "te Kartennummer " +
                   str(kartennummer))  # kann später weg
+            print(type(id))
+            print(type(kartennummer))
             if kartennummer == id:
                 print("in der if abfrage")  # kann später weg
                 kartenid = (x['karten'][i]['id'])
