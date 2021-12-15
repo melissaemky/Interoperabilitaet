@@ -18,7 +18,7 @@ with open("/home/pi/config_dateien/universetest.json") as json_file:
     la = len(x['aktoren'])
     for k in range(0, la):
         aktor = (x['aktoren'][k]['typ'])
-        if aktor == "haustür":
+        if aktor == "haustuer":
             print("Haustür gefunden")  # kann später weg
             zustand = (x['aktoren'][k]['zustand'])
             zustand = "0"
@@ -56,7 +56,7 @@ while True:
                             print("Zugang: ja")  # kann später weg
                             for k in range(0, la):
                                 aktor = (x['aktoren'][k]['typ'])
-                                if aktor == "haustür":
+                                if aktor == "haustuer":
                                     # kann später weg
                                     print("Haustür gefunden")
                                     zustand = (x['aktoren'][k]['zustand'])
