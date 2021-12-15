@@ -121,9 +121,9 @@ def _argparser():
     return args
 
 
-def _main():
+def luftsensor():
     args = _argparser()
-    wavemini = WaveMini(args.SERIAL_NUMBER)
+    wavemini = WaveMini(2920037725)
 
     def _signal_handler(sig, frame):
         wavemini.disconnect()
@@ -153,6 +153,7 @@ def _main():
     with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
         json.dump(x, json_file, indent=4)
 
-
+"""
 if __name__ == "__main__":
     _main()
+"""
