@@ -112,18 +112,8 @@ def _parse_serial_number(manufacturer_data):
         if ID == 0x0334:
             return SN
 
-
-def _argparser():
-    parser = argparse.ArgumentParser(prog="read_wavemini", description="Script for reading current values from a Wave Mini product")
-    parser.add_argument("SERIAL_NUMBER", type=int, help="Airthings device serial number found under the magnetic backplate.")
-    parser.add_argument("SAMPLE_PERIOD", type=int, default=60, help="Time in seconds between reading the current values")
-    args = parser.parse_args()
-    return args
-
-
-def _main():
-    args = _argparser()
-    wavemini = WaveMini(args.SERIAL_NUMBER)
+def luftsensor():
+    wavemini = WaveMini(2920037725)
 
     def _signal_handler(sig, frame):
         wavemini.disconnect()
@@ -131,31 +121,29 @@ def _main():
 
     signal.signal(signal.SIGINT, _signal_handler)
 
-    while True:
-        wavemini.connect(retries=3)
-        messwerte = str(wavemini.read())    
-        print(messwerte)
-        wavemini.disconnect()
+    wavemini.connect(retries=3)
+    messwerte = str(wavemini.read())    
+    print(messwerte)
+    wavemini.disconnect()
 
-        temperatur = messwerte[16:21]
-        luftfeuchte = messwerte[34:42]
-        voc = messwerte[52:56]
+    temperatur = messwerte[16:21]
+    luftfeuchte = messwerte[34:42]
+    voc = messwerte[52:56]
 
-        voc = voc.replace('"',"")
-        luftfeuchte = luftfeuchte.replace('"',"")
-        temperatur = temperatur.replace('"',"")
+    voc = voc.replace('"',"")
+    luftfeuchte = luftfeuchte.replace('"',"")
+    temperatur = temperatur.replace('"',"")
 
-        
-        with open ("/home/pi/config_dateien/universe.json") as json_file:
-            x = json.load(json_file)
-        x["sensoren"][0]["messwert"] = temperatur
-        x["sensoren"][1]["messwert"] = luftfeuchte
-        x["sensoren"][2]["messwert"] = voc
-        with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
-            json.dump(x, json_file, indent=4)
-        
-        time.sleep(args.SAMPLE_PERIOD)
+    
+    with open ("/home/pi/config_dateien/universe.json") as json_file:
+        x = json.load(json_file)
+    x["sensoren"][0]["messwert"] = temperatur
+    x["sensoren"][1]["messwert"] = luftfeuchte
+    x["sensoren"][2]["messwert"] = voc
+    with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
+        json.dump(x, json_file, indent=4)
 
-
+"""
 if __name__ == "__main__":
     _main()
+"""
