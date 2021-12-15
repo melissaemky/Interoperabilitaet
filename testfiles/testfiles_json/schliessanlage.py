@@ -27,6 +27,7 @@ while True:
         lb = len(x['benutzer'])
         la = len(x['aktoren'])
         for i in range(0, lk):
+            print("in der for schleife")
             kartennummer = (x['karten'][i]['kartennummer'])
             if kartennummer == id:
                 kartenid = (x['karten'][i]['id'])
