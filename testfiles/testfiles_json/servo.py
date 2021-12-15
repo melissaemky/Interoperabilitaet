@@ -30,6 +30,3 @@ def test(winkel):
         time.sleep(2)
     print(winkel)
     # GPIO.cleanup()
-
-
-tuerzu()
