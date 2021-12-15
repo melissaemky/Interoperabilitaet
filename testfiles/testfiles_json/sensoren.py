@@ -1,5 +1,4 @@
-import humidity
-from testfiles.testfiles_json.humidity import luftsensor
+from humidity import luftsensor
 
 luftsensor()
 
