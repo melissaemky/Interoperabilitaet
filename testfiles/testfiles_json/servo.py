@@ -9,7 +9,7 @@ def tuerini():
 
 
 def tuerzu():
-    p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
+    # p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
     p.ChangeDutyCycle(10)
     print("Tür ist geschlossen!")
     time.sleep(2)
@@ -17,7 +17,7 @@ def tuerzu():
 
 
 def tuerauf():
-    p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
+    # p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
     p.ChangeDutyCycle(3.5)
     print("Tür ist geöffnet!")
     time.sleep(2)
