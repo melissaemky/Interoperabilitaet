@@ -14,7 +14,7 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 reader = SimpleMFRC522()
 
 while True:
-    if GPIO.input(38) == 0 or GPIO.input(40) == 0:
+    if 1 == 0:  # GPIO.input(38) == 0 or GPIO.input(40) == 0:
         time.sleep(30)  # Hier fehlt noch speichern und löschen
     else:
         id, text = reader.read()
