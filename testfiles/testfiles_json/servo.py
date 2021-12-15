@@ -5,8 +5,6 @@ def türini():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(12, GPIO.OUT)
     GPIO.setwarnings(False)
-    p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
-    p.start(10)  # Initialisierung
 
 def tuerzu():
     p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
@@ -28,4 +26,8 @@ def test(winkel):
     time.sleep(2)
     print(winkel)
 
-
+türini()
+p = GPIO.PWM(12, 50)  # GPIO 12 als PWM mit 50Hz
+p.start(10)  # Initialisierung
+time.sleep(2)
+GPIO.cleanup()
