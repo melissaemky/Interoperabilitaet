@@ -139,7 +139,7 @@ def _main():
 
         temperatur = messwerte[13:18]
         luftfeuchte = messwerte[33:38]
-        voc = messwerte[49:52]
+        voc = messwerte[48:52]
         voc = voc.replace('"',"")
         
         with open ("/home/pi/config_dateien/universe.json") as json_file:
