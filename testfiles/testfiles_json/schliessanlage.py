@@ -30,6 +30,7 @@ while True:
             print("in der for schleife")
             kartennummer = (x['karten'][i]['kartennummer'])
             if kartennummer == id:
+                print("in der if abfrage")
                 kartenid = (x['karten'][i]['id'])
                 print("Kartennummer gefunden")  # kann später weg
                 for j in range(0, lb):
