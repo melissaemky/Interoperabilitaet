@@ -3,7 +3,7 @@
 import time
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
-from servo import tuerauf, tuerzu
+from servo import tuerauf, tuerzu, tuerini
 import json
 
 
@@ -13,6 +13,17 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
 reader = SimpleMFRC522()
 
+with open("/home/pi/config_dateien/universetest.json") as json_file:
+    x = json.load(json_file)
+    la = len(x['aktoren'])
+    for k in range(0, la):
+        aktor = (x['aktoren'][k]['typ'])
+        if aktor == "haustür":
+            print("Haustür gefunden")  # kann später weg
+            zustand = (x['aktoren'][k]['zustand'])
+            zustand = "0"
+            with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                json.dump(x, json_file, indent=4)
 
 while True:
     if 1 == 0:  # GPIO.input(38) == 0 or GPIO.input(40) == 0:
@@ -52,6 +63,7 @@ while True:
                                     if zustand == "0":
                                         # kann später weg
                                         print("Tür war zu, wird geöffnet")
+                                        tuerini()
                                         tuerauf()
                                         # Zustand "Türauf"
                                         (x['aktoren'][k]['zustand']) = "1"
@@ -61,6 +73,7 @@ while True:
                                     else:
                                         # kann später weg
                                         print("Tür war auf, wird geschlossen")
+                                        tuerini()
                                         tuerzu()
                                         # Zustand "Türzu"
                                         (x['aktoren'][k]['zustand']) = "0"
