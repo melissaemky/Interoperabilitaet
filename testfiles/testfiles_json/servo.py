@@ -1,7 +1,7 @@
 import time
 import RPi.GPIO as GPIO
 
-def türini():
+def tuerini():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(12, GPIO.OUT)
     GPIO.setwarnings(False)
