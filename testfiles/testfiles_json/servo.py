@@ -23,10 +23,13 @@ def tuerauf():
     print("Tür ist geöffnet!")
     time.sleep(2)
 
+
 def test(winkel):
     if uni == 1:
         p.ChangeDutyCycle(winkel)
         time.sleep(2)
     print(winkel)
-    #GPIO.cleanup()
-    
+    # GPIO.cleanup()
+
+
+tuerzu()
