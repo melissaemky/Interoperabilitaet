@@ -97,7 +97,7 @@ class CurrentValues():
         return cls(round(data[1]/100.0 - 273.15, 2), data[3]/100.0, data[4])
 
     def __str__(self):
-        msg = 'Temperature: {}, '.format(self.temperature)
+        msg = '"Temperature": "{}", '.format(self.temperature)
         msg += '"Humidity": "{}", '.format(self.humidity)
         msg += '"VOC": "{}"'.format(self.voc)
         return msg
@@ -137,10 +137,14 @@ def _main():
         print(messwerte)
         wavemini.disconnect()
 
-        temperatur = messwerte[13:18]
-        luftfeuchte = messwerte[33:38]
-        voc = messwerte[49:52]
-        voc = voc.replace("//","")
+        temperatur = messwerte[16:21]
+        luftfeuchte = messwerte[34:42]
+        voc = messwerte[52:56]
+
+        voc = voc.replace('"',"")
+        luftfeuchte = luftfeuchte.replace('"',"")
+        temperatur = temperatur.replace('"',"")
+
         
         with open ("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
