@@ -137,9 +137,10 @@ def _main():
         print(messwerte)
         wavemini.disconnect()
 
-        temperatur = messwerte[13:18]
-        luftfeuchte = messwerte[33:38]
-        voc = messwerte[48:52]
+        temperatur = messwerte[16:21]
+        luftfeuchte = messwerte[34:42]
+        voc = messwerte[52:56]
+
         voc = voc.replace('"',"")
         luftfeuchte = luftfeuchte.replace('"',"")
         temperatur = temperatur.replace('"',"")
