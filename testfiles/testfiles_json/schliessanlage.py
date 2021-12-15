@@ -22,6 +22,7 @@ while True:
 
         with open("/home/pi/config_dateien/universetest.json") as json_file:
             x = json.load(json_file)
+            '''
             lk = len(x['karten'])
             lb = len(x['benutzer'])
             la = len(x['aktoren'])
@@ -63,3 +64,4 @@ while True:
                                                     x, json_file, indent=4)
 
     GPIO.cleanup()
+'''
