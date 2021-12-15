@@ -112,17 +112,7 @@ def _parse_serial_number(manufacturer_data):
         if ID == 0x0334:
             return SN
 
-
-def _argparser():
-    parser = argparse.ArgumentParser(prog="read_wavemini", description="Script for reading current values from a Wave Mini product")
-    parser.add_argument("SERIAL_NUMBER", type=int, help="Airthings device serial number found under the magnetic backplate.")
-    parser.add_argument("SAMPLE_PERIOD", type=int, default=60, help="Time in seconds between reading the current values")
-    args = parser.parse_args()
-    return args
-
-
 def luftsensor():
-    args = _argparser()
     wavemini = WaveMini(2920037725)
 
     def _signal_handler(sig, frame):
