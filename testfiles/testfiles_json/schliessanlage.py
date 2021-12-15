@@ -20,7 +20,7 @@ while True:
         id, text = reader.read()
         print(id)
 
-        with open("/home/pi/config_dateien/universetest.json") as json_file:
+        with open("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
         print("Json geladen")  # kann später weg
         lk = len(x['karten'])
