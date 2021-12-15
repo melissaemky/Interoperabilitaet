@@ -157,4 +157,4 @@ def luftsensor():
 if __name__ == "__main__":
     _main()
 """
-#luftsensor()
+luftsensor()
