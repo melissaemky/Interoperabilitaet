@@ -13,6 +13,17 @@ GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
 
 reader = SimpleMFRC522()
 
+with open("/home/pi/config_dateien/universetest.json") as json_file:
+    x = json.load(json_file)
+    la = len(x['aktoren'])
+    for k in range(0, la):
+        aktor = (x['aktoren'][k]['typ'])
+        if aktor == "haustür":
+            print("Haustür gefunden")  # kann später weg
+            zustand = (x['aktoren'][k]['zustand'])
+            zustand = "0"
+            with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                json.dump(x, json_file, indent=4)
 
 while True:
     if 1 == 0:  # GPIO.input(38) == 0 or GPIO.input(40) == 0:
