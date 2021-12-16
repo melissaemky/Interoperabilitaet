@@ -1,15 +1,5 @@
-# Wenn karte vor tür (RFID-Sensor) gehalten wird und Karte in benutzer.ini als zugelassen gilt, dann fürhre funktion tuerauf() aus
-# Endlosschleife durch drücken der beiden vorhandenen Knöpfe für gewisse Zeit unterbrechen
-import time
-import RPi.GPIO as GPIO
-from mfrc522 import SimpleMFRC522
-from servo import tuerauf, tuerzu, tuerini
 import json
-
-
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)
-GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)
+from servo import tuerauf, tuerzu, tuerini
 
 reader = SimpleMFRC522()
 
@@ -89,4 +79,3 @@ if zustandgrün == "0" and zustandblau == "0":
                                     # Neuen Zustand speichern
                                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                                         json.dump(x, json_file, indent=4)
-    GPIO.cleanup()

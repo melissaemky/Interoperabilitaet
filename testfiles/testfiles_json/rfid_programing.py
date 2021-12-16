@@ -1,5 +1,4 @@
 import json
-import time
 from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
