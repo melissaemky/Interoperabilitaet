@@ -9,3 +9,5 @@ def lesen():
     zeitpunkt = (body["lastseen"])
     print(state)
     print(zeitpunkt)
+
+lesen()
