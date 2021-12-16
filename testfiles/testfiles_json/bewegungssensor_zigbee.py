@@ -12,7 +12,7 @@ def lesen():
     with open ("/home/pi/config_dateien/universe.json") as json_file:
         x = json.load(json_file)
     x["sensoren"][4]["status"] = state
-    x["sensoren"][1]["zeitpunkt"] = zeitpunkt
+    x["sensoren"][4]["zeitpunkt"] = zeitpunkt
     with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
         json.dump(x, json_file, indent=4)
 
