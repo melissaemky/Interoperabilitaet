@@ -28,6 +28,7 @@ import signal
 import struct
 import sys
 import time
+import json
 
 
 class WaveMini():
@@ -96,9 +97,9 @@ class CurrentValues():
         return cls(round(data[1]/100.0 - 273.15, 2), data[3]/100.0, data[4])
 
     def __str__(self):
-        msg = "Temperature: {} *C, ".format(self.temperature)
-        msg += "Humidity: {} %rH, ".format(self.humidity)
-        msg += "VOC: {} ppm".format(self.voc)
+        msg = '"Temperature": "{}", '.format(self.temperature)
+        msg += '"Humidity": "{}", '.format(self.humidity)
+        msg += '"VOC": "{}"'.format(self.voc)
         return msg
 
 
@@ -111,18 +112,8 @@ def _parse_serial_number(manufacturer_data):
         if ID == 0x0334:
             return SN
 
-
-def _argparser():
-    parser = argparse.ArgumentParser(prog="read_wavemini", description="Script for reading current values from a Wave Mini product")
-    parser.add_argument("SERIAL_NUMBER", type=int, help="Airthings device serial number found under the magnetic backplate.")
-    parser.add_argument("SAMPLE_PERIOD", type=int, default=60, help="Time in seconds between reading the current values")
-    args = parser.parse_args()
-    return args
-
-
-def _main():
-    args = _argparser()
-    wavemini = WaveMini(args.SERIAL_NUMBER)
+def luftsensor():
+    wavemini = WaveMini(2920037725)
 
     def _signal_handler(sig, frame):
         wavemini.disconnect()
@@ -130,6 +121,7 @@ def _main():
 
     signal.signal(signal.SIGINT, _signal_handler)
 
+<<<<<<< HEAD:testfiles/humidity.py
     while True:
         wavemini.connect(retries=3)
         current_values = wavemini.read()
@@ -145,3 +137,31 @@ def indiejson()
     sensor1 =
     with open(/home/pi/config_datei/universe.json) as json_file:
     json.dump(person_dict, json_file)
+=======
+    wavemini.connect(retries=3)
+    messwerte = str(wavemini.read())    
+    print(messwerte)
+    wavemini.disconnect()
+
+    temperatur = messwerte[16:21]
+    luftfeuchte = messwerte[34:42]
+    voc = messwerte[52:56]
+
+    voc = voc.replace('"',"")
+    luftfeuchte = luftfeuchte.replace('"',"")
+    temperatur = temperatur.replace('"',"")
+
+    
+    with open ("/home/pi/config_dateien/universe.json") as json_file:
+        x = json.load(json_file)
+    x["sensoren"][0]["messwert"] = temperatur
+    x["sensoren"][1]["messwert"] = luftfeuchte
+    x["sensoren"][2]["messwert"] = voc
+    with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
+        json.dump(x, json_file, indent=4)
+
+"""
+if __name__ == "__main__":
+    _main()
+"""
+>>>>>>> 9b04adf9ed8167255c5268385c8dd96c1372be41:testfiles/testfiles_json/humidity.py
