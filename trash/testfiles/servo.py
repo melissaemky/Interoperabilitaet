@@ -30,3 +30,4 @@ def test(winkel):
     print(winkel)
     #GPIO.cleanup()
     
+tuerauf()
