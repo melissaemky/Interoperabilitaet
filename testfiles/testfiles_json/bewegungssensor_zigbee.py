@@ -7,5 +7,5 @@ def lesen():
     body = json.loads(pir.text)
     state = (body["state"]["presence"])
     zeitpunkt = (body["lastseen"])
-    print(state)
+    #print(state)
     print(zeitpunkt)
