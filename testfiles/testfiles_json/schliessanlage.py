@@ -88,6 +88,5 @@ if zustandgrün == "0" and zustandblau == "0":
                                     (x['aktoren'][k]['zustand']) = "0"
                                     # Neuen Zustand speichern
                                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
-                                        json.dump(
-                                            x, json_file, indent=4)
+                                        json.dump(x, json_file, indent=4)
     GPIO.cleanup()
