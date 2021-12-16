@@ -1,5 +1,4 @@
 from time import sleep
-import servo
 import time
 
 while 1:
