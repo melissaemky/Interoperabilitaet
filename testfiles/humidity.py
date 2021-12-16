@@ -133,10 +133,15 @@ def _main():
     while True:
         wavemini.connect(retries=3)
         current_values = wavemini.read()
-        print(current_values)
+        indiejson()                               ###Hier
         wavemini.disconnect()
         time.sleep(args.SAMPLE_PERIOD)
 
 
 if __name__ == "__main__":
     _main()
+
+def indiejson()
+    sensor1 =
+    with open(/home/pi/config_datei/universe.json) as json_file:
+    json.dump(person_dict, json_file)
