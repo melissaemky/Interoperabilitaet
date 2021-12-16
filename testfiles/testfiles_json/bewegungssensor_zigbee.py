@@ -10,4 +10,4 @@ def lesen():
     print(state)
     print(zeitpunkt)
 
-lesen()
+#lesen()
