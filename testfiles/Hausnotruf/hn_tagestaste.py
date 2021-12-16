@@ -1,3 +1,4 @@
+"""
 import time                                             #für time.sleep
 import hn_taster
 
@@ -12,3 +13,11 @@ def countdown(t):                                       #13h countdown
         t -= 1
         hn_taster.alarm()                               #Alarmfunktion aus hn_taster ausführen
 
+"""
+with open ("/home/pi/config_dateien/taster.json") as json_file:
+    x = json.load(json_file)
+
+lt = len(x['taster'])
+for k in range(0, lt):
+    zeitpunkt = (x['taster'][k]['zeitpunkt'])
+    if (zeitpunkt-)
