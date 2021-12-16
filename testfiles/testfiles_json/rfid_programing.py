@@ -74,6 +74,7 @@ def löschen():
 
 with open("/home/pi/config_dateien/taster.json") as json_file:
     x = json.load(json_file)
+    print(type(x))
     lt = len(x['taster'])
     for k in range(0, lt):
         taster = (x['taster'][k]['name'])
