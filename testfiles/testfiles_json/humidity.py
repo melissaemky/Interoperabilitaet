@@ -121,29 +121,18 @@ def luftsensor():
 
     signal.signal(signal.SIGINT, _signal_handler)
 
-    wavemini.connect(retries=3)
-    messwerte = str(wavemini.read())    
-    print(messwerte)
-    wavemini.disconnect()
+    while True:
+        wavemini.connect(retries=3)
+        current_values = wavemini.read()
+        indiejson()                               ###Hier
+        wavemini.disconnect()
+        time.sleep(args.SAMPLE_PERIOD)
 
-    temperatur = messwerte[16:21]
-    luftfeuchte = messwerte[34:42]
-    voc = messwerte[52:56]
 
-    voc = voc.replace('"',"")
-    luftfeuchte = luftfeuchte.replace('"',"")
-    temperatur = temperatur.replace('"',"")
-
-    
-    with open ("/home/pi/config_dateien/universe.json") as json_file:
-        x = json.load(json_file)
-    x["sensoren"][0]["messwert"] = temperatur
-    x["sensoren"][1]["messwert"] = luftfeuchte
-    x["sensoren"][2]["messwert"] = voc
-    with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
-        json.dump(x, json_file, indent=4)
-
-"""
 if __name__ == "__main__":
     _main()
-"""
+
+def indiejson()
+    sensor1 =
+    with open(/home/pi/config_datei/universe.json) as json_file:
+    json.dump(person_dict, json_file)
