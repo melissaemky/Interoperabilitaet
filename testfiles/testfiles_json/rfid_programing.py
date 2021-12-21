@@ -40,7 +40,7 @@ def speichern():
             def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
-                    file_data["benutzer"].append(new_data)
+                    file_data["karten"].append(new_data)
                     file.seek(0)
                     json.dump(file_data, file, indent=4)
             x = {
