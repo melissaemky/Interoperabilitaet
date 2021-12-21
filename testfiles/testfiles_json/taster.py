@@ -26,11 +26,11 @@ while(1):
     state2 = str(body2["state"]["buttonevent"])
     xtime2 = (body2["state"]["lastupdated"])
 
-    if GPIO.input(38) == 1:
+    if GPIO.input(38) == 0:
         blau = 1
     else:
         blau = 0
-    if GPIO.input(40) == 1:
+    if GPIO.input(40) == 0:
         gruen = 1
     else:
         gruen = 0
