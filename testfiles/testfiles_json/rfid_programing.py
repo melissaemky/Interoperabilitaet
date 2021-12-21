@@ -38,7 +38,7 @@ def speichern():
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
         print(i)
         print(lk)
-        if i == lk and kartennummer != id:
+        if i == lk-1 and kartennummer != id:
             print("Karte existiert noch nicht " + str(id))
 
             def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
