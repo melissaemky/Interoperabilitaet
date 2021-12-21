@@ -82,7 +82,7 @@ def löschen():
 
 def rfid_programming():
     # taster.json öffnen und Zustände der Taster in variablen speichern:
-    with open("/home/pi/config_dateien/tastertast.json") as json_file:
+    with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
         lt = len(x['taster'])
         for k in range(0, lt):
