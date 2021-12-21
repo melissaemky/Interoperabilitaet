@@ -12,7 +12,9 @@ def speichern():
         x = json.load(json_file)
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
+    print(lk)
     lb = len(x['benutzer'])
+    print(lb)
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
