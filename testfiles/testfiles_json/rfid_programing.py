@@ -7,31 +7,25 @@ reader = SimpleMFRC522()
 def speichern():
     id, text = reader.read()
     print("Karte gelesen " + str(id))
-
+    print(type(id))
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
-    k = lk+1
     lb = len(x['benutzer'])
-    b = lb+1
-    y = {
-        "id": k,
-        "kartennummer": id
-    }
-    z = {
-        "id": b,
-        "kartenid": k,
-        "zugang": "ja"
-    }
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
         print(str(i) + "te Kartennummer " +
               str(kartennummer))  # kann später weg
-        if kartennummer == str(id):
+        print(type(id))
+        print(type(kartennummer))
+        print(id)
+        print(kartennummer)
+        if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
+            print(type(kartenid))
             print("Kartennummer gefunden")  # kann später weg
             for j in range(0, lb):
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
@@ -40,9 +34,34 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
-        else:
-            with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
-                json.dump(y['karten'], z['benutzer'], json_file, indent=4)
+        elif i == lk:
+            print("Karte existiert noch nicht " + str(id))
+
+            def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
+                with open(filename, 'r+') as file:
+                    file_data = json.load(file)
+                    file_data["benutzer"].append(new_data)
+                    file.seek(0)
+                    json.dump(file_data, file, indent=4)
+
+            def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
+                with open(filename, 'r+') as file:
+                    file_data = json.load(file)
+                    file_data["karten"].append(new_data)
+                    file.seek(0)
+                    json.dump(file_data, file, indent=4)
+            x = {
+                "id": lb,
+                "kartenid": lk,
+                "zugang": "ja"
+            }
+            y = {
+                "id": lk,
+                "kartennummer": id
+            }
+
+            write_benutzer(x)
+            write_karten(y)
 
 
 def löschen():
@@ -59,10 +78,10 @@ def löschen():
         kartennummer = (x['karten'][i]['kartennummer'])
         print(str(i) + "te Kartennummer " +
               str(kartennummer))  # kann später weg
-        if kartennummer == str(id):
+        if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
-            print("Kartennummer gefunden" + kartenid)  # kann später weg
+            print("Kartennummer gefunden")  # kann später weg
             for j in range(0, lb):
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
                 if kartenid == benutzerkarte:
@@ -72,7 +91,7 @@ def löschen():
                     print("Zugang auf 'nein' gesetzt")  # kann später weg
 
 
-with open("/home/pi/config_dateien/taster.json") as json_file:
+with open("/home/pi/config_dateien/tastertast.json") as json_file:
     x = json.load(json_file)
     lt = len(x['taster'])
     for k in range(0, lt):
@@ -85,6 +104,6 @@ with open("/home/pi/config_dateien/taster.json") as json_file:
             zustandblau = (x['taster'][k]['zustand'])
 
 if zustandgruen == "1":
-    speichern()  # Speichert noch nichts neues
+    speichern()
 if zustandblau == "1":
     löschen()
