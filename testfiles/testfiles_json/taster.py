@@ -36,12 +36,11 @@ xtime2 = (body2["state"]["lastupdated"])
 
 with open ("/home/pi/config_dateien/taster.json") as json_file:
     x = json.load(json_file)
-    print(x["taster"][4]["name"])
     x["taster"][4]["zustand"]= state1
     x["taster"][4]["zeitpunkt"]= time_unix(xtime1)
-    print(x["taster"][4]["name"])
     x["taster"][5]["zustand"]= state2
     x["taster"][5]["zeitpunkt"]= time_unix(xtime2)
+    print(x)
 
 
 with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
