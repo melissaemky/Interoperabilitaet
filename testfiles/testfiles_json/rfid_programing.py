@@ -6,40 +6,27 @@ reader = SimpleMFRC522()
 
 def speichern():
     id, text = reader.read()
-    print("Karte gelesen " + str(id))
-    print(type(id))
+    # universe.json laden und lesen
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
-    print("Json geladen")  # kann später weg
-    lk = len(x['karten'])
-    lb = len(x['benutzer'])
-    z = 0
-    for i in range(0, lk):
-        print("in der for schleife")  # kann später weg
+    lk = len(x['karten'])  # Anzahl der gespeicherten Karten
+    lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
+    z = 0  # Hilfsvariable
+    for i in range(0, lk):  # Gespeicherte Karten werden durchlaufen
         kartennummer = (x['karten'][i]['kartennummer'])
-        print(str(i) + "te Kartennummer " +
-              str(kartennummer))  # kann später weg
-        print(type(id))
-        print(type(kartennummer))
-        print(id)
-        print(kartennummer)
-        if kartennummer == id:
-            print("if abfrage ist wahr")  # kann später weg
+        if kartennummer == id:  # Karte wurde schonmal gespeichert
             kartenid = (x['karten'][i]['id'])
-            print(type(kartenid))
-            print("Kartennummer gefunden")  # kann später weg
-            for j in range(0, lb):
+            for j in range(0, lb):  # Benutzer dieser Karte finden
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
-                if kartenid == benutzerkarte:
-                    (x['benutzer'][j]['zugang']) = "ja"
+                if kartenid == benutzerkarte:  # Benutzer gefunden
+                    (x['benutzer'][j]['zugang']) = "ja"  # Zugang erlauben
+                    # Aktualisierung in universe.json zurückschreiben
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
-                    print("Zugang auf 'ja' gesetzt")  # kann später weg
                     z = 1
 
-        if i == lk-1 and z == 0:
-            print("Karte existiert noch nicht " + str(id))
-
+        if i == lk-1 and z == 0:  # Alle Karten durchlaufen und keine passende gefunden
+            # universe.json laden, lesen und ergänzen mit x
             def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
@@ -47,6 +34,7 @@ def speichern():
                     file.seek(0)
                     json.dump(file_data, file, indent=4)
 
+            # universe.json laden, lesen und ergänzen mit y
             def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
@@ -69,44 +57,38 @@ def speichern():
 
 def löschen():
     id, text = reader.read()
-    print("Karte gelesen " + str(id))
-
+    # universe.json laden und lesen
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
-    print("Json geladen")  # kann später weg
-    lk = len(x['karten'])
-    lb = len(x['benutzer'])
-    for i in range(0, lk):
-        print("in der for schleife")  # kann später weg
+    lk = len(x['karten'])  # Anzahl der gespeicherten Karten
+    lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
+    for i in range(0, lk):  # Gespeicherte Karten werden durchlaufen
         kartennummer = (x['karten'][i]['kartennummer'])
-        print(str(i) + "te Kartennummer " +
-              str(kartennummer))  # kann später weg
-        if kartennummer == id:
-            print("if abfrage ist wahr")  # kann später weg
+        if kartennummer == id:  # Karte wurde schonmal gespeichert
             kartenid = (x['karten'][i]['id'])
-            print("Kartennummer gefunden")  # kann später weg
-            for j in range(0, lb):
+            for j in range(0, lb):  # Benutzer dieser Karte finden
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
-                if kartenid == benutzerkarte:
-                    (x['benutzer'][j]['zugang']) = "nein"
+                if kartenid == benutzerkarte:  # Benutzer gefunden
+                    (x['benutzer'][j]['zugang']) = "nein"  # Zugang verweigern
+                    # Aktualisierung in universe.json zurückschreiben
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
-                    print("Zugang auf 'nein' gesetzt")  # kann später weg
 
 
-with open("/home/pi/config_dateien/tastertast.json") as json_file:
-    x = json.load(json_file)
-    lt = len(x['taster'])
-    for k in range(0, lt):
-        taster = (x['taster'][k]['name'])
-        if taster == "gruen":
-            print("Grüner taster gefunden")  # kann später weg
-            zustandgruen = (x['taster'][k]['zustand'])
-        if taster == "blau":
-            print("blauer taster gefunden")  # kann später weg
-            zustandblau = (x['taster'][k]['zustand'])
+def rfid_programming():
+    # taster.json öffnen und Zustände der Taster in variablen speichern:
+    with open("/home/pi/config_dateien/tastertast.json") as json_file:
+        x = json.load(json_file)
+        lt = len(x['taster'])
+        for k in range(0, lt):
+            taster = (x['taster'][k]['name'])
+            if taster == "gruen":
+                zustandgruen = (x['taster'][k]['zustand'])
+            if taster == "blau":
+                zustandblau = (x['taster'][k]['zustand'])
 
-if zustandgruen == "1":
-    speichern()
-if zustandblau == "1":
-    löschen()
+    # Wenn Grüner/Blauer Taster gedrückt, dann speichern/Löschen ausführen:
+    if zustandgruen == "1":
+        speichern()
+    if zustandblau == "1":
+        löschen()
