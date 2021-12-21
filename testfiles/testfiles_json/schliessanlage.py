@@ -21,14 +21,14 @@ with open("/home/pi/config_dateien/taster.json") as json_file:
     lt = len(x['taster'])
     for k in range(0, lt):
         taster = (x['taster'][k]['name'])
-        if taster == "grün":
+        if taster == "gruen":
             print("Grüner taster gefunden")  # kann später weg
-            zustandgrün = (x['taster'][k]['zustand'])
+            zustandgruen = (x['taster'][k]['zustand'])
         if taster == "blau":
             print("blauer taster gefunden")  # kann später weg
             zustandblau = (x['taster'][k]['zustand'])
 
-if zustandgrün == "0" and zustandblau == "0":
+if zustandgruen == "0" and zustandblau == "0":
     id, text = reader.read()
     print("Karte gelesen " + str(id))
 
