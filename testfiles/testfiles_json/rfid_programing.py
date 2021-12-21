@@ -36,6 +36,8 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
+        print(i)
+        print(lk)
         if i == lk and kartennummer != id:
             print("Karte existiert noch nicht " + str(id))
 
