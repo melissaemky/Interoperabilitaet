@@ -18,7 +18,7 @@ def schliessanlage():
                 with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                     json.dump(x, json_file, indent=4)
 
-    with open("/home/pi/config_dateien/taster.json") as json_file:
+    with open("/home/pi/config_dateien/tastertast.json") as json_file:
         x = json.load(json_file)
         lt = len(x['taster'])
         for k in range(0, lt):
