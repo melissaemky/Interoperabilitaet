@@ -6,7 +6,6 @@ reader = SimpleMFRC522()
 
 def speichern():
     id, text = reader.read()
-    print("Timo ist doof")
     # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
@@ -25,6 +24,7 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     z = 1
+                    print("Der Zugang wurde gestattet.")
 
         if i == lk-1 and z == 0:  # Alle Karten durchlaufen und keine passende gefunden
             # universe.json laden, lesen und ergänzen mit x:
@@ -54,6 +54,7 @@ def speichern():
 
             write_benutzer(x)
             write_karten(y)
+            print("Der Benutzer wurde gespeichert und der Zugang wurde gestattet.")
 
 
 def löschen():
@@ -74,6 +75,9 @@ def löschen():
                     # Aktualisierung in universe.json zurückschreiben:
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
+                    print("Der Zugang wurde verweigert.")
+        else:
+            print("Die Karte wurde noch nie gespeichert.")
 
 
 def rfid_programming():
