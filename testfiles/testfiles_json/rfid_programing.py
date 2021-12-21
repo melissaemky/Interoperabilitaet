@@ -34,35 +34,34 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
-                    break
-        # elif i == lk:
-    print("Karte existiert noch nicht " + str(id))
+        elif i == lk and kartennummer != id:
+            print("Karte existiert noch nicht " + str(id))
 
-    def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
-        with open(filename, 'r+') as file:
-            file_data = json.load(file)
-            file_data["benutzer"].append(new_data)
-            file.seek(0)
-            json.dump(file_data, file, indent=4)
+            def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
+                with open(filename, 'r+') as file:
+                    file_data = json.load(file)
+                    file_data["benutzer"].append(new_data)
+                    file.seek(0)
+                    json.dump(file_data, file, indent=4)
 
-    def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
-        with open(filename, 'r+') as file:
-            file_data = json.load(file)
-            file_data["karten"].append(new_data)
-            file.seek(0)
-            json.dump(file_data, file, indent=4)
-    x = {
-        "id": lb,
-        "kartenid": lk,
-        "zugang": "ja"
-    }
-    y = {
-        "id": lk,
-        "kartennummer": id
-    }
+            def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
+                with open(filename, 'r+') as file:
+                    file_data = json.load(file)
+                    file_data["karten"].append(new_data)
+                    file.seek(0)
+                    json.dump(file_data, file, indent=4)
+            x = {
+                "id": lb,
+                "kartenid": lk,
+                "zugang": "ja"
+            }
+            y = {
+                "id": lk,
+                "kartennummer": id
+            }
 
-    write_benutzer(x)
-    write_karten(y)
+            write_benutzer(x)
+            write_karten(y)
 
 
 def löschen():
