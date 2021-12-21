@@ -7,21 +7,24 @@ reader = SimpleMFRC522()
 def speichern():
     id, text = reader.read()
     print("Karte gelesen " + str(id))
-
+    print(type(id))
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
+    print("lk " + type(lk))
     lb = len(x['benutzer'])
+    print("lb " + type(lb))
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
-        print(type(kartennummer))
+        print("kartennummer " + type(kartennummer))
         print(str(i) + "te Kartennummer " +
               str(kartennummer))  # kann später weg
-        if kartennummer == str(id):
+        if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
+            print("kartenid " + type(kartenid))
             print("Kartennummer gefunden")  # kann später weg
             for j in range(0, lb):
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
