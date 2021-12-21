@@ -81,7 +81,7 @@ def löschen():
         if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
-            print("Kartennummer gefunden" + kartenid)  # kann später weg
+            print("Kartennummer gefunden")  # kann später weg
             for j in range(0, lb):
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
                 if kartenid == benutzerkarte:
