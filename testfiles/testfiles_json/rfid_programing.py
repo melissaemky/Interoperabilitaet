@@ -34,7 +34,7 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
-        else:
+        elif i == lk:
             print("Karte existiert noch nicht " + str(id))
 
             def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
