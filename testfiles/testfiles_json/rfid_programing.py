@@ -7,7 +7,7 @@ reader = SimpleMFRC522()
 def speichern():
     id, text = reader.read()
     # universe.json laden und lesen:
-    with open("/home/pi/config_dateien/universetest.json") as json_file:
+    with open("/home/pi/config_dateien/universe.json") as json_file:
         x = json.load(json_file)
     lk = len(x['karten'])  # Anzahl der gespeicherten Karten
     lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
@@ -21,14 +21,14 @@ def speichern():
                 if kartenid == benutzerkarte:  # Benutzer gefunden
                     (x['benutzer'][j]['zugang']) = "ja"  # Zugang erlauben
                     # Aktualisierung in universe.json zurückschreiben:
-                    with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                    with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     z = 1
                     print("Der Zugang wurde gestattet.")
 
         if i == lk-1 and z == 0:  # Alle Karten durchlaufen und keine passende gefunden
             # universe.json laden, lesen und ergänzen mit x:
-            def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
+            def write_benutzer(new_data, filename='/home/pi/config_dateien/universe.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
                     file_data["benutzer"].append(new_data)
@@ -36,7 +36,7 @@ def speichern():
                     json.dump(file_data, file, indent=4)
 
             # universe.json laden, lesen und ergänzen mit y:
-            def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
+            def write_karten(new_data, filename='/home/pi/config_dateien/universe.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
                     file_data["karten"].append(new_data)
@@ -60,7 +60,7 @@ def speichern():
 def löschen():
     id, text = reader.read()
     # universe.json laden und lesen:
-    with open("/home/pi/config_dateien/universetest.json") as json_file:
+    with open("/home/pi/config_dateien/universe.json") as json_file:
         x = json.load(json_file)
     lk = len(x['karten'])  # Anzahl der gespeicherten Karten
     lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
@@ -73,7 +73,7 @@ def löschen():
                 if kartenid == benutzerkarte:  # Benutzer gefunden
                     (x['benutzer'][j]['zugang']) = "nein"  # Zugang verweigern
                     # Aktualisierung in universe.json zurückschreiben:
-                    with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                    with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Der Zugang wurde verweigert.")
         else:

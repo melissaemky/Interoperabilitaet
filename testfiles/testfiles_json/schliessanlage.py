@@ -7,7 +7,7 @@ reader = SimpleMFRC522()
 
 def schliessanlage():
     # universe.json laden und lesen:
-    with open("/home/pi/config_dateien/universetest.json") as json_file:
+    with open("/home/pi/config_dateien/universe.json") as json_file:
         x = json.load(json_file)
         la = len(x['aktoren'])  # Anzahl der gespeicherten Aktoren
         for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
@@ -15,7 +15,7 @@ def schliessanlage():
             if aktor == "haustuer":  # Benötigter Aktor gefunden
                 zustand = (x['aktoren'][k]['zustand'])
                 zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
-                with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                     json.dump(x, json_file, indent=4)
 
     # taster.json öffnen und Zustände der Taster in variablen speichern:
@@ -32,7 +32,7 @@ def schliessanlage():
     # Schließanlage funktioniert nur, wenn momentan Karten weder gespeichert, noch gelöscht werden sollen:
     if zustandgruen == "0" and zustandblau == "0":
         id, text = reader.read()
-        with open("/home/pi/config_dateien/universetest.json") as json_file:
+        with open("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
         lk = len(x['karten'])  # Anzahl der gespeicherten Karten
         lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
@@ -57,7 +57,7 @@ def schliessanlage():
                                         # Zustand auf "Geöffnet"
                                         (x['aktoren'][k]['zustand']) = "1"
                                         # Neuen Zustand speichern:
-                                        with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                                        with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                                             json.dump(x, json_file, indent=4)
                                     else:
                                         # Wenn Haustür geöffnet ist, dann schließen:
@@ -66,5 +66,5 @@ def schliessanlage():
                                         # Zustand auf "Geschlossen"
                                         (x['aktoren'][k]['zustand']) = "0"
                                         # Neuen Zustand speichern:
-                                        with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
+                                        with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                                             json.dump(x, json_file, indent=4)
