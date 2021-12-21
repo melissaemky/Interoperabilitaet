@@ -16,12 +16,12 @@ def speichern():
     lb = len(x['benutzer'])
     b = lb+1
     y = {
-        "id": k+1,
+        "id": k,
         "kartennummer": id
     }
     z = {
-        "id": b+1,
-        "kartenid": k+1,
+        "id": b,
+        "kartenid": k,
         "zugang": "ja"
     }
     for i in range(0, lk):
