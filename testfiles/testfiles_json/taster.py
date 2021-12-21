@@ -36,7 +36,6 @@ while(1):
         x["taster"][4]["zeitpunkt"]= time_unix(xtime1)
         x["taster"][5]["zustand"]= state2
         x["taster"][5]["zeitpunkt"]= time_unix(xtime2)
-        print(x)
 
 
     with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
