@@ -12,19 +12,17 @@ def speichern():
         x = json.load(json_file)
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
-    print("lk " + str(lk))
     lb = len(x['benutzer'])
-    print("lb " + str(lb))
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
-        print("kartennummer " + type(kartennummer))
+        print(type(kartennummer))
         print(str(i) + "te Kartennummer " +
               str(kartennummer))  # kann später weg
         if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
-            print("kartenid " + type(kartenid))
+            print(type(kartenid))
             print("Kartennummer gefunden")  # kann später weg
             for j in range(0, lb):
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
