@@ -6,7 +6,7 @@ def time_unix(timetoconvert):
     timetoconvert = timetoconvert[0:19]
     t = time.strptime(timetoconvert, "%Y-%m-%dT%H:%M:%S")
     #print(t)
-    unix = int(time.mktime(t))
+    unix = int(time.mktime(t))+3600
     return unix
 
 def lesen():
