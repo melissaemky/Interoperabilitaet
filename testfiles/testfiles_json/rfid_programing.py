@@ -40,11 +40,9 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
-        '''
         else:
             with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                 json.dump(y['karten'], z['benutzer'], json_file, indent=4)
-                '''
 
 
 def löschen():
