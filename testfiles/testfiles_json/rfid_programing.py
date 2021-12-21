@@ -15,7 +15,7 @@ def speichern():
     print(lk)
     lb = len(x['benutzer'])
     print(lb)
-    for i in range(0, lk):
+    for i in range(1, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
         print(str(i) + "te Kartennummer " +
@@ -77,7 +77,7 @@ def löschen():
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
     lb = len(x['benutzer'])
-    for i in range(0, lk):
+    for i in range(1, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
         print(str(i) + "te Kartennummer " +
