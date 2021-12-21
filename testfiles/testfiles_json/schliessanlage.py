@@ -45,7 +45,7 @@ def schliessanlage():
             kartennummer = (x['karten'][i]['kartennummer'])
             print(str(i) + "te Kartennummer " +
                   str(kartennummer))  # kann später weg
-            if kartennummer == str(id):
+            if kartennummer == id:
                 print("if abfrage ist wahr")  # kann später weg
                 kartenid = (x['karten'][i]['id'])
                 print("Kartennummer gefunden")  # kann später weg
