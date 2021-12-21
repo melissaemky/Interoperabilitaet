@@ -16,9 +16,10 @@ def speichern():
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
-        print(type(kartennummer))
         print(str(i) + "te Kartennummer " +
               str(kartennummer))  # kann später weg
+        print(type(id))
+        print(type(kartennummer))
         if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
