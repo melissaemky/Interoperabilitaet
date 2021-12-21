@@ -1,5 +1,6 @@
 import json
 from servo import tuerauf, tuerzu, tuerini
+from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
