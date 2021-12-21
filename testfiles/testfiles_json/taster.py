@@ -1,11 +1,7 @@
-'''
 import RPi.GPIO as GPIO
-from mfrc522 import SimpleMFRC522
-
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(38, GPIO.IN)  # Blauer Taster(Speichern)?
 GPIO.setup(40, GPIO.IN)  # Grüner Taser(Löschen)?
-'''
 
 import time
 import json
@@ -30,6 +26,15 @@ while(1):
     state2 = str(body2["state"]["buttonevent"])
     xtime2 = (body2["state"]["lastupdated"])
 
+    if GPIO.input(38) == 0:
+        blau = 1
+    else:
+        blau = 0
+    if GPIO.input(40) == 0:
+        gruen = 1
+    else:
+        gruen = 0
+
 
     with open ("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
@@ -37,6 +42,9 @@ while(1):
         x["taster"][4]["zeitpunkt"]= time_unix(xtime1)
         x["taster"][5]["zustand"]= state2[0]
         x["taster"][5]["zeitpunkt"]= time_unix(xtime2)
+        x["taster"][1]["zustand"]= blau
+        x["taster"][3]["zustand"]= gruen
+        
 
 
     with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
