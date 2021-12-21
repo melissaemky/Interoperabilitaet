@@ -84,7 +84,7 @@ def löschen():
                     print("Zugang auf 'nein' gesetzt")  # kann später weg
 
 
-with open("/home/pi/config_dateien/taster.json") as json_file:
+with open("/home/pi/config_dateien/tastertast.json") as json_file:
     x = json.load(json_file)
     lt = len(x['taster'])
     for k in range(0, lt):
@@ -97,6 +97,6 @@ with open("/home/pi/config_dateien/taster.json") as json_file:
             zustandblau = (x['taster'][k]['zustand'])
 
 if zustandgruen == "1":
-    speichern()  # Speichert noch nichts neues
+    speichern()
 if zustandblau == "1":
     löschen()
