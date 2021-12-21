@@ -20,6 +20,8 @@ def speichern():
               str(kartennummer))  # kann später weg
         print(type(id))
         print(type(kartennummer))
+        print(id)
+        print(kartennummer)
         if kartennummer == id:
             print("if abfrage ist wahr")  # kann später weg
             kartenid = (x['karten'][i]['id'])
