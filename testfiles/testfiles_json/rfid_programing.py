@@ -13,6 +13,7 @@ def speichern():
     print("Json geladen")  # kann später weg
     lk = len(x['karten'])
     lb = len(x['benutzer'])
+    z = 0
     for i in range(0, lk):
         print("in der for schleife")  # kann später weg
         kartennummer = (x['karten'][i]['kartennummer'])
@@ -34,7 +35,9 @@ def speichern():
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Zugang auf 'ja' gesetzt")  # kann später weg
-        elif i == lk and kartennummer != id:
+                    z = 1
+
+        if i == lk-1 and z == 0:
             print("Karte existiert noch nicht " + str(id))
 
             def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
