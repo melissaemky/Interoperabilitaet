@@ -6,6 +6,7 @@ reader = SimpleMFRC522()
 
 def speichern():
     id, text = reader.read()
+    print("Timo ist doof")
     # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
