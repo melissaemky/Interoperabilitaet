@@ -6,79 +6,65 @@ reader = SimpleMFRC522()
 
 
 def schliessanlage():
+    # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
-        la = len(x['aktoren'])
-        for k in range(0, la):
+        la = len(x['aktoren'])  # Anzahl der gespeicherten Aktoren
+        for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
             aktor = (x['aktoren'][k]['typ'])
-            if aktor == "haustuer":
-                print("Haustür gefunden")  # kann später weg
+            if aktor == "haustuer":  # Benötigter Aktor gefunden
                 zustand = (x['aktoren'][k]['zustand'])
-                zustand = "0"
+                zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
                 with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                     json.dump(x, json_file, indent=4)
 
-    with open("/home/pi/config_dateien/tastertast.json") as json_file:
+    # taster.json öffnen und Zustände der Taster in variablen speichern:
+    with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
         lt = len(x['taster'])
         for k in range(0, lt):
             taster = (x['taster'][k]['name'])
             if taster == "gruen":
-                print("Grüner taster gefunden")  # kann später weg
                 zustandgruen = (x['taster'][k]['zustand'])
             if taster == "blau":
-                print("blauer taster gefunden")  # kann später weg
                 zustandblau = (x['taster'][k]['zustand'])
 
+    # Schließanlage funktioniert nur, wenn momentan Karten weder gespeichert, noch gelöscht werden sollen:
     if zustandgruen == "0" and zustandblau == "0":
         id, text = reader.read()
-        print("Karte gelesen " + str(id))
-
         with open("/home/pi/config_dateien/universetest.json") as json_file:
             x = json.load(json_file)
-        print("Json geladen")  # kann später weg
-        lk = len(x['karten'])
-        lb = len(x['benutzer'])
-        la = len(x['aktoren'])
-        for i in range(0, lk):
-            print("in der for schleife")  # kann später weg
+        lk = len(x['karten'])  # Anzahl der gespeicherten Karten
+        lb = len(x['benutzer'])  # Anzahl der gespeicherten Benutzer
+        la = len(x['aktoren'])  # Anzahl der gespeicherten Aktoren
+        for i in range(0, lk):  # Gespeicherte Karten werden durchlaufen
             kartennummer = (x['karten'][i]['kartennummer'])
-            print(str(i) + "te Kartennummer " +
-                  str(kartennummer))  # kann später weg
-            if kartennummer == id:
-                print("if abfrage ist wahr")  # kann später weg
+            if kartennummer == id:  # Karte wurde schonmal gespeichert
                 kartenid = (x['karten'][i]['id'])
-                print("Kartennummer gefunden")  # kann später weg
-                for j in range(0, lb):
+                for j in range(0, lb):  # Benutzer dieser Karte finden
                     benutzerkarte = (x['benutzer'][j]['kartenid'])
-                    if kartenid == benutzerkarte:
+                    if kartenid == benutzerkarte:  # Benutzer gefunden
                         zugang = (x['benutzer'][j]['zugang'])
-                        print("Benutzer gefunden")  # kann später weg
-                        if zugang == "ja":
-                            print("Zugang: ja")  # kann später weg
-                            for k in range(0, la):
+                        if zugang == "ja":  # Benutzer hat Zugang
+                            for k in range(0, la):  # Haustür finden
                                 aktor = (x['aktoren'][k]['typ'])
-                                if aktor == "haustuer":
-                                    # kann später weg
-                                    print("Haustür gefunden")
+                                if aktor == "haustuer":  # Haustür gefunden
                                     zustand = (x['aktoren'][k]['zustand'])
+                                    # Wenn Haustür geschlossen ist, dann öffnen:
                                     if zustand == "0":
-                                        # kann später weg
-                                        print("Tür war zu, wird geöffnet")
                                         tuerini()
                                         tuerauf()
-                                        # Zustand "Türauf"
+                                        # Zustand auf "Geöffnet"
                                         (x['aktoren'][k]['zustand']) = "1"
-                                        # Neuen Zustand speichern
+                                        # Neuen Zustand speichern:
                                         with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                                             json.dump(x, json_file, indent=4)
                                     else:
-                                        # kann später weg
-                                        print("Tür war auf, wird geschlossen")
+                                        # Wenn Haustür geöffnet ist, dann schließen:
                                         tuerini()
                                         tuerzu()
-                                        # Zustand "Türzu"
+                                        # Zustand auf "Geschlossen"
                                         (x['aktoren'][k]['zustand']) = "0"
-                                        # Neuen Zustand speichern
+                                        # Neuen Zustand speichern:
                                         with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                                             json.dump(x, json_file, indent=4)

@@ -6,7 +6,7 @@ reader = SimpleMFRC522()
 
 def speichern():
     id, text = reader.read()
-    # universe.json laden und lesen
+    # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
     lk = len(x['karten'])  # Anzahl der gespeicherten Karten
@@ -20,13 +20,13 @@ def speichern():
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
                 if kartenid == benutzerkarte:  # Benutzer gefunden
                     (x['benutzer'][j]['zugang']) = "ja"  # Zugang erlauben
-                    # Aktualisierung in universe.json zurückschreiben
+                    # Aktualisierung in universe.json zurückschreiben:
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     z = 1
 
         if i == lk-1 and z == 0:  # Alle Karten durchlaufen und keine passende gefunden
-            # universe.json laden, lesen und ergänzen mit x
+            # universe.json laden, lesen und ergänzen mit x:
             def write_benutzer(new_data, filename='/home/pi/config_dateien/universetest.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
@@ -34,7 +34,7 @@ def speichern():
                     file.seek(0)
                     json.dump(file_data, file, indent=4)
 
-            # universe.json laden, lesen und ergänzen mit y
+            # universe.json laden, lesen und ergänzen mit y:
             def write_karten(new_data, filename='/home/pi/config_dateien/universetest.json'):
                 with open(filename, 'r+') as file:
                     file_data = json.load(file)
@@ -57,7 +57,7 @@ def speichern():
 
 def löschen():
     id, text = reader.read()
-    # universe.json laden und lesen
+    # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universetest.json") as json_file:
         x = json.load(json_file)
     lk = len(x['karten'])  # Anzahl der gespeicherten Karten
@@ -70,14 +70,14 @@ def löschen():
                 benutzerkarte = (x['benutzer'][j]['kartenid'])
                 if kartenid == benutzerkarte:  # Benutzer gefunden
                     (x['benutzer'][j]['zugang']) = "nein"  # Zugang verweigern
-                    # Aktualisierung in universe.json zurückschreiben
+                    # Aktualisierung in universe.json zurückschreiben:
                     with open('/home/pi/config_dateien/universetest.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
 
 
 def rfid_programming():
     # taster.json öffnen und Zustände der Taster in variablen speichern:
-    with open("/home/pi/config_dateien/tastertast.json") as json_file:
+    with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
         lt = len(x['taster'])
         for k in range(0, lt):
