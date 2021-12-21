@@ -76,8 +76,6 @@ def löschen():
                     with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                         json.dump(x, json_file, indent=4)
                     print("Der Zugang wurde verweigert.")
-        else:
-            print("Die Karte wurde noch nie gespeichert.")
 
 
 def rfid_programming():
