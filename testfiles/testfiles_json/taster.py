@@ -42,9 +42,9 @@ while(1):
             x["taster"][1]["zustand"] = str(blau)
             with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
                 json.dump(x, json_file, indent=4)
-            print("neuer Zustand zurückgeschrieben")
+            print("neuer Zustand 1 zurückgeschrieben")
     else:
-        print("Zustand war auf 1")
+        print("taster nicht gedrückt")
         zeitpunkt = x["taster"][1]["zeitpunkt"]
         now = time.time()
         now = int(now)
@@ -56,7 +56,7 @@ while(1):
             x["taster"][1]["zustand"] = str(blau)
             with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
                 json.dump(x, json_file, indent=4)
-            print("neuer Zustand zurückgeschrieben")
+            print("neuer Zustand 0 zurückgeschrieben")
     '''
     if GPIO.input(38) == 0:
         blau = 1
