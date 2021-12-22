@@ -45,16 +45,14 @@ while(1):
             print("neuer Zustand zurückgeschrieben")
     else:
         print("Zustand war auf 1")
-        zustand = x["taster"][1]["zustand"]
-        if zustand == "1":
-            zeitpunkt = x["taster"][1]["zeitpunkt"]
-            now = time.time()
-            now = int(now)
-            dif = now - zeitpunkt
-            if dif <= 7:
-                break
-            else:
-                blau = 0
+        zeitpunkt = x["taster"][1]["zeitpunkt"]
+        now = time.time()
+        now = int(now)
+        dif = now - zeitpunkt
+        if dif <= 7:
+            break
+        else:
+            blau = 0
     '''
     if GPIO.input(38) == 0:
         blau = 1
