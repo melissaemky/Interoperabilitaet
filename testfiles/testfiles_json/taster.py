@@ -51,7 +51,6 @@ while(1):
         dif = now - zeitpunkt
         if dif <= 7:
             print("Abgebrochen")
-            break
         else:
             blau = 0
             x["taster"][1]["zustand"] = str(blau)
