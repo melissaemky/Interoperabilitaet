@@ -50,9 +50,14 @@ while(1):
         now = int(now)
         dif = now - zeitpunkt
         if dif <= 7:
+            print("Abgebrochen")
             break
         else:
             blau = 0
+            x["taster"][1]["zustand"] = str(blau)
+            with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
+                json.dump(x, json_file, indent=4)
+            print("neuer Zustand zurückgeschrieben")
     '''
     if GPIO.input(38) == 0:
         blau = 1
