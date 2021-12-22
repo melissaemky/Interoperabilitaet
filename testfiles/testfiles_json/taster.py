@@ -30,7 +30,7 @@ while(1):
     state2 = str(body2["state"]["buttonevent"])
     xtime2 = (body2["state"]["lastupdated"])
 
-'''
+    '''
     if GPIO.input(38) == 0:
         print("blauer taster gedrückt")
         blau = 1
@@ -59,7 +59,7 @@ while(1):
                 json.dump(x, json_file, indent=4)
             print("neuer Zustand 0 zurückgeschrieben")
     '''
-   if GPIO.input(38) == 0:
+    if GPIO.input(38) == 0:
         blau = 1
     else:
         blau = 0
