@@ -78,7 +78,7 @@ def löschen():
                     print("Der Zugang wurde verweigert.")
 
 
-def rfid_programming():
+def rfid_programing():
     # taster.json öffnen und Zustände der Taster in variablen speichern:
     with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
