@@ -40,18 +40,30 @@ while(1):
             with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
                 json.dump(x, json_file, indent=4)
     else:
-        blau = 0
+        zustand = x["taster"][1]["zustand"]
+        if zustand == "1":
+            zeitpunkt = x["taster"][1]["zeitpunkt"]
+            now = time.time()
+            now = int(now)
+            dif = now - zeitpunkt
+            if dif <= 7:
+                break
+            else:
+                blau = 0
     if GPIO.input(40) == 0:
         gruen = 1
     else:
         gruen = 0
 
-        x["taster"][4]["zustand"] = state1[0]
-        x["taster"][4]["zeitpunkt"] = time_unix(xtime1)
-        x["taster"][5]["zustand"] = state2[0]
-        x["taster"][5]["zeitpunkt"] = time_unix(xtime2)
-        x["taster"][1]["zustand"] = str(blau)
-        x["taster"][3]["zustand"] = str(gruen)
+    with open("/home/pi/config_dateien/taster.json") as json_file:
+        x = json.load(json_file)
+
+    x["taster"][4]["zustand"] = state1[0]
+    x["taster"][4]["zeitpunkt"] = time_unix(xtime1)
+    x["taster"][5]["zustand"] = state2[0]
+    x["taster"][5]["zeitpunkt"] = time_unix(xtime2)
+    x["taster"][1]["zustand"] = str(blau)
+    x["taster"][3]["zustand"] = str(gruen)
 
     with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
         json.dump(x, json_file, indent=4)
