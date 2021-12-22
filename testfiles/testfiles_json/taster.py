@@ -57,13 +57,12 @@ while(1):
 
     with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
-
-    x["taster"][4]["zustand"] = state1[0]
-    x["taster"][4]["zeitpunkt"] = time_unix(xtime1)
-    x["taster"][5]["zustand"] = state2[0]
-    x["taster"][5]["zeitpunkt"] = time_unix(xtime2)
-    x["taster"][1]["zustand"] = str(blau)
-    x["taster"][3]["zustand"] = str(gruen)
+        x["taster"][4]["zustand"] = state1[0]
+        x["taster"][4]["zeitpunkt"] = time_unix(xtime1)
+        x["taster"][5]["zustand"] = state2[0]
+        x["taster"][5]["zeitpunkt"] = time_unix(xtime2)
+        x["taster"][1]["zustand"] = str(blau)
+        x["taster"][3]["zustand"] = str(gruen)
 
     with open("/home/pi/config_dateien/taster.json", 'w') as json_file:
         json.dump(x, json_file, indent=4)
