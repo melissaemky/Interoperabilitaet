@@ -33,7 +33,6 @@ while True:
     # Schließanlage funktioniert nur, wenn momentan Karten weder gespeichert, noch gelöscht werden sollen:
     if zustandgruen == "0" and zustandblau == "0":
         id, text = reader.read()
-        print("meep")
         with open("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
         lk = len(x['karten'])  # Anzahl der gespeicherten Karten
