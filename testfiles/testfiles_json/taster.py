@@ -17,8 +17,7 @@ def time_unix(timetoconvert):
     return unix
 
 
-while(1):
-
+def taster():
     with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
 
