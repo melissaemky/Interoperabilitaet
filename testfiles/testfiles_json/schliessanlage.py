@@ -5,30 +5,31 @@ from mfrc522 import SimpleMFRC522
 reader = SimpleMFRC522()
 
 
+# universe.json laden und lesen:
+with open("/home/pi/config_dateien/universe.json") as json_file:
+    x = json.load(json_file)
+    la = len(x['aktoren'])  # Anzahl der gespeicherten Aktoren
+    for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
+        aktor = (x['aktoren'][k]['typ'])
+        if aktor == "haustuer":  # Benötigter Aktor gefunden
+            zustand = (x['aktoren'][k]['zustand'])
+            zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
+            with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
+                json.dump(x, json_file, indent=4)
+
+# taster.json öffnen und Zustände der Taster in variablen speichern:
+with open("/home/pi/config_dateien/taster.json") as json_file:
+    x = json.load(json_file)
+    lt = len(x['taster'])
+    for k in range(0, lt):
+        taster = (x['taster'][k]['name'])
+        if taster == "gruen":
+            zustandgruen = (x['taster'][k]['zustand'])
+        if taster == "blau":
+            zustandblau = (x['taster'][k]['zustand'])
+
+
 def schliessanlage():
-    # universe.json laden und lesen:
-    with open("/home/pi/config_dateien/universe.json") as json_file:
-        x = json.load(json_file)
-        la = len(x['aktoren'])  # Anzahl der gespeicherten Aktoren
-        for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
-            aktor = (x['aktoren'][k]['typ'])
-            if aktor == "haustuer":  # Benötigter Aktor gefunden
-                zustand = (x['aktoren'][k]['zustand'])
-                zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
-                with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
-                    json.dump(x, json_file, indent=4)
-
-    # taster.json öffnen und Zustände der Taster in variablen speichern:
-    with open("/home/pi/config_dateien/taster.json") as json_file:
-        x = json.load(json_file)
-        lt = len(x['taster'])
-        for k in range(0, lt):
-            taster = (x['taster'][k]['name'])
-            if taster == "gruen":
-                zustandgruen = (x['taster'][k]['zustand'])
-            if taster == "blau":
-                zustandblau = (x['taster'][k]['zustand'])
-
     # Schließanlage funktioniert nur, wenn momentan Karten weder gespeichert, noch gelöscht werden sollen:
     if zustandgruen == "0" and zustandblau == "0":
         id, text = reader.read()
