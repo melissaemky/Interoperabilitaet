@@ -17,7 +17,6 @@ def schliessanlage():
                 zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
                 with open('/home/pi/config_dateien/universe.json', 'w') as json_file:
                     json.dump(x, json_file, indent=4)
-                    print("meep")
 
     # taster.json öffnen und Zustände der Taster in variablen speichern:
     with open("/home/pi/config_dateien/taster.json") as json_file:
