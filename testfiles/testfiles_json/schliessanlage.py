@@ -4,7 +4,6 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
-
 # universe.json laden und lesen:
 with open("/home/pi/config_dateien/universe.json") as json_file:
     x = json.load(json_file)
@@ -32,7 +31,10 @@ with open("/home/pi/config_dateien/taster.json") as json_file:
 def schliessanlage():
     # Schließanlage funktioniert nur, wenn momentan Karten weder gespeichert, noch gelöscht werden sollen:
     if zustandgruen == "0" and zustandblau == "0":
-        id, text = reader.read()
+        if reader.read == True:
+            print("meep")
+            id = reader.read()
+
         with open("/home/pi/config_dateien/universe.json") as json_file:
             x = json.load(json_file)
         lk = len(x['karten'])  # Anzahl der gespeicherten Karten
