@@ -2,11 +2,6 @@ import requests
 import json
 import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(38, GPIO.IN)  # Blauer Taster(Löschen)
-GPIO.setup(40, GPIO.IN)  # Grüner Taster(Speichern)
-GPIO.setup(36, GPIO.IN)  # Roter Taster
-GPIO.setup(37, GPIO.IN)  # Gelber Taster
 
 
 def time_unix(timetoconvert):
@@ -18,7 +13,15 @@ def time_unix(timetoconvert):
 
 
 def taster():
-    with open("/home/pi/config_dateien/taster.json") as json_file:
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(38, GPIO.IN)  # Blauer Taster(Löschen)
+    GPIO.setup(40, GPIO.IN)  # Grüner Taster(Speichern)
+    GPIO.setup(36, GPIO.IN)  # Roter Taster
+    GPIO.setup(37, GPIO.IN)  # Gelber Taster
+
+
+s
+   with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
 
     tasterB1 = requests.get('http://192.168.8.215/api/C0CEFA0EB7/sensors/7/')
