@@ -24,4 +24,4 @@ def alarm():
     time.sleep(10)
 
 # Endlosschleife Button press ruft Alarm-Funktion auf
-alarm()g
+alarm()
