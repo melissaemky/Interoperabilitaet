@@ -56,5 +56,6 @@ if __name__ == "__main__":
     while True:
         steps = 100  # ("Wie viele Schritte vorwaerts? ")
         forward(1, int(steps))
+        time.sleep(5)
         # steps = 10  # ("Wie viele Schritte rueckwaerts? ")
         # backwards(int(delay) / 1000.0, int(steps))
