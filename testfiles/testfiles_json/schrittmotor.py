@@ -52,7 +52,7 @@ def backwards(delay, steps):
             time.sleep(delay)
 
 
-delay = 1
+delay = 1000
 
 if __name__ == "__main__":
     while True:
