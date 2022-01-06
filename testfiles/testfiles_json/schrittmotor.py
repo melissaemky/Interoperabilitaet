@@ -4,10 +4,10 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-coil_A_1_pin = 29  # orange
+coil_A_1_pin = 35  # blau
 coil_A_2_pin = 31  # gelb
 coil_B_1_pin = 33  # pink
-coil_B_2_pin = 35  # blau
+coil_B_2_pin = 29  # orange
 # enable_pin   = 7 # Nur bei bestimmten Motoren benoetigt (+Zeile 24 und 30)
 
 # anpassen, falls andere Sequenz
