@@ -2,12 +2,12 @@ import time
 import RPi.GPIO as GPIO
 
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-coil_A_1_pin = 4  # pink (Farbe der Kabel in Anleitung)
-coil_A_2_pin = 17  # orange
-coil_B_1_pin = 23  # blau
-coil_B_2_pin = 24  # gelb
+coil_A_1_pin = 33  # pink (Farbe der Kabel in Anleitung)
+coil_A_2_pin = 29  # orange
+coil_B_1_pin = 35  # blau
+coil_B_2_pin = 31  # gelb
 # enable_pin   = 7 # Nur bei bestimmten Motoren benoetigt (+Zeile 24 und 30)
 
 # anpassen, falls andere Sequenz
@@ -54,8 +54,8 @@ def backwards(delay, steps):
 
 if __name__ == '__main__':
     while True:
-        delay = raw_input("Zeitverzoegerung (ms)?")
-        steps = raw_input("Wie viele Schritte vorwaerts? ")
+        delay = input(1) #("Zeitverzoegerung (ms)?")
+        steps = input(10) #("Wie viele Schritte vorwaerts? ")
         forward(int(delay) / 1000.0, int(steps))
-        steps = raw_input("Wie viele Schritte rueckwaerts? ")
+        steps = input(10) #("Wie viele Schritte rueckwaerts? ")
         backwards(int(delay) / 1000.0, int(steps))
