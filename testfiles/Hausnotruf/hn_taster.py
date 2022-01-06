@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 from twilio.rest import Client
 import time
 from datetime import datetime
-import hn_tagestaste
 import configparser
 
 import sys                                                          #Twilio Anmeldedaten einbinden
