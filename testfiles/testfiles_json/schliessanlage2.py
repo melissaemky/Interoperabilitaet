@@ -54,6 +54,7 @@ while True:
                                     # Wenn Haustür geschlossen ist, dann öffnen:
                                     if zustand == "0":
                                         backwards(1, int(200))
+                                        print("Tür ist geöffnet!")
                                         # Zustand auf "Geöffnet"
                                         (x["aktoren"][k]["zustand"]) = "1"
                                         # Neuen Zustand speichern:
@@ -64,6 +65,7 @@ while True:
                                     else:
                                         # Wenn Haustür geöffnet ist, dann schließen:
                                         forward(1, int(200))
+                                        print("Tür ist geschlossen!")
                                         # Zustand auf "Geschlossen"
                                         (x["aktoren"][k]["zustand"]) = "0"
                                         # Neuen Zustand speichern:
