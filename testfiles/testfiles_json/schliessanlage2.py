@@ -53,7 +53,7 @@ while True:
                                     zustand = x["aktoren"][k]["zustand"]
                                     # Wenn Haustür geschlossen ist, dann öffnen:
                                     if zustand == "0":
-                                        backwards()
+                                        backwards(1, int(steps))
                                         # Zustand auf "Geöffnet"
                                         (x["aktoren"][k]["zustand"]) = "1"
                                         # Neuen Zustand speichern:
@@ -63,7 +63,7 @@ while True:
                                             json.dump(x, json_file, indent=4)
                                     else:
                                         # Wenn Haustür geöffnet ist, dann schließen:
-                                        forward()
+                                        forward(1, int(steps))
                                         # Zustand auf "Geschlossen"
                                         (x["aktoren"][k]["zustand"]) = "0"
                                         # Neuen Zustand speichern:
