@@ -27,6 +27,7 @@ GPIO.setup(coil_A_1_pin, GPIO.OUT)
 GPIO.setup(coil_A_2_pin, GPIO.OUT)
 GPIO.setup(coil_B_1_pin, GPIO.OUT)
 GPIO.setup(coil_B_2_pin, GPIO.OUT)
+GPIO.setup(8, GPIO.IN)
 GPIO.setup(10, GPIO.IN)
 
 # GPIO.output(enable_pin, 1)
