@@ -54,7 +54,7 @@ def backwards(delay, steps):
 
 if __name__ == "__main__":
     while True:
-        steps = 100  # ("Wie viele Schritte vorwaerts? ")
+        steps = 200  # ("Wie viele Schritte vorwaerts? ")
         forward(1, int(steps))
         time.sleep(5)
         # steps = 10  # ("Wie viele Schritte rueckwaerts? ")
