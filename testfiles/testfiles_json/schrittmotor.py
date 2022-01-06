@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-coil_A_1_pin = 29  # orange  
+coil_A_1_pin = 29  # orange
 coil_A_2_pin = 31  # gelb
 coil_B_1_pin = 33  # pink
 coil_B_2_pin = 35  # blau
@@ -22,13 +22,13 @@ Seq[5] = [1, 0, 1, 0]
 Seq[6] = [0, 0, 1, 0]
 Seq[7] = [0, 1, 1, 0]
 
-#GPIO.setup(enable_pin, GPIO.OUT)
+# GPIO.setup(enable_pin, GPIO.OUT)
 GPIO.setup(coil_A_1_pin, GPIO.OUT)
 GPIO.setup(coil_A_2_pin, GPIO.OUT)
 GPIO.setup(coil_B_1_pin, GPIO.OUT)
 GPIO.setup(coil_B_2_pin, GPIO.OUT)
 
-#GPIO.output(enable_pin, 1)
+# GPIO.output(enable_pin, 1)
 
 
 def setStep(w1, w2, w3, w4):
@@ -52,10 +52,11 @@ def backwards(delay, steps):
             time.sleep(delay)
 
 
-if __name__ == '__main__':
+delay = 1
+
+if __name__ == "__main__":
     while True:
-        delay = input(int('1')) #("Zeitverzoegerung (ms)?")
-        steps = input(int('10')) #("Wie viele Schritte vorwaerts? ")
+        steps = 10  # ("Wie viele Schritte vorwaerts? ")
         forward(int(delay) / 1000.0, int(steps))
-        steps = input(int("10")) #("Wie viele Schritte rueckwaerts? ")
+        steps = 10  # ("Wie viele Schritte rueckwaerts? ")
         backwards(int(delay) / 1000.0, int(steps))
