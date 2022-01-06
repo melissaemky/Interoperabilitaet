@@ -14,16 +14,6 @@ cfg = configparser.ConfigParser()
 #Timestamp
 x = datetime.now()
 
-#GPIO set
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(26, GPIO.IN)
-GPIO.setup(36, GPIO.IN)
-
-#hn-tagestaste - countdown restart
-if GPIO.input(26) == 0:
-    hn_tagestaste.countdown.exit()
-    hn_tagestaste.countdown(int(t))
-
 #Alarm + SMS auslösen
 def alarm():
     print("!!!Hausnotruf ALARM!!!\n"+"um "+str(x.hour)+":"+str(x.minute)+" Uhr")
@@ -34,6 +24,4 @@ def alarm():
     time.sleep(10)
 
 # Endlosschleife Button press ruft Alarm-Funktion auf
-while True:
-    if GPIO.input(36) == 0:
-        alarm()
+alarm()
