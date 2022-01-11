@@ -45,7 +45,6 @@ def forward(delay, steps):  # Türe schließen
 
 def backwards(delay, steps):  # Türe öffnen
     while GPIO.input(10) == 0:  # Stoppt bei passieren der Lichtschranke
-        print(GPIO.input(10))
         for i in range(steps):
             for j in reversed(range(StepCount)):
                 setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
