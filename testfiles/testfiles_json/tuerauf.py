@@ -4,10 +4,6 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-coil_A_1_pin = 35  # blaues kabel
-coil_A_2_pin = 31  # gelbes kabel
-coil_B_1_pin = 33  # pinkes kabel
-coil_B_2_pin = 29  # oranges kabel
 
 # anpassen, falls andere Sequenz
 StepCount = 8
@@ -21,19 +17,19 @@ Seq[5] = [1, 0, 1, 0]
 Seq[6] = [0, 0, 1, 0]
 Seq[7] = [0, 1, 1, 0]
 
-GPIO.setup(coil_A_1_pin, GPIO.OUT)
-GPIO.setup(coil_A_2_pin, GPIO.OUT)
-GPIO.setup(coil_B_1_pin, GPIO.OUT)
-GPIO.setup(coil_B_2_pin, GPIO.OUT)
+GPIO.setup(35, GPIO.OUT)  # blaues kabel
+GPIO.setup(31, GPIO.OUT)  # gelbes kabel
+GPIO.setup(33, GPIO.OUT)  # pinkes kabel
+GPIO.setup(29, GPIO.OUT)  # oranges kabel
 GPIO.setup(8, GPIO.IN)
 GPIO.setup(10, GPIO.IN)
 
 
 def setStep(w1, w2, w3, w4):
-    GPIO.output(coil_A_1_pin, w1)
-    GPIO.output(coil_A_2_pin, w2)
-    GPIO.output(coil_B_1_pin, w3)
-    GPIO.output(coil_B_2_pin, w4)
+    GPIO.output(35, w1)
+    GPIO.output(31, w2)
+    GPIO.output(33, w3)
+    GPIO.output(29, w4)
 
 
 def backwards(delay, steps):  # Türe öffnen
