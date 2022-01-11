@@ -53,7 +53,7 @@ while True:
                                     zustand = x["aktoren"][k]["zustand"]
                                     # Wenn Haustür geschlossen ist, dann öffnen:
                                     if zustand == "0":
-                                        backwards(1, int(20))
+                                        backwards(1, int(200))
                                         print("Tür ist geöffnet!")
                                         # Zustand auf "Geöffnet"
                                         (x["aktoren"][k]["zustand"]) = "1"
