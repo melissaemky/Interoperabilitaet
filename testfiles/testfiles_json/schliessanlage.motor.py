@@ -5,8 +5,8 @@ from mfrc522 import SimpleMFRC522
 reader = SimpleMFRC522()
 
 while True:
-    # universe.json laden und lesen:
-    with open("/home/pi/config_dateien/universe.json") as json_file:
+    # schliessanlage.json laden und lesen:
+    with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
         x = json.load(json_file)
         la = len(x["aktoren"])  # Anzahl der gespeicherten Aktoren
         for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
@@ -14,11 +14,13 @@ while True:
             if aktor == "haustuer":  # Benötigter Aktor gefunden
                 zustand = x["aktoren"][k]["zustand"]
                 zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
-                with open("/home/pi/config_dateien/universe.json", "w") as json_file:
+                with open(
+                    "/home/pi/config_dateien/schliessanlage.json", "w"
+                ) as json_file:
                     json.dump(x, json_file, indent=4)
 
     id, text = reader.read()
-    with open("/home/pi/config_dateien/universe.json") as json_file:
+    with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
         x = json.load(json_file)
     lk = len(x["karten"])  # Anzahl der gespeicherten Karten
     lb = len(x["benutzer"])  # Anzahl der gespeicherten Benutzer
@@ -46,7 +48,8 @@ while True:
                                     (x["aktoren"][k]["zustand"]) = "1"
                                     # Neuen Zustand speichern:
                                     with open(
-                                        "/home/pi/config_dateien/universe.json", "w"
+                                        "/home/pi/config_dateien/schliessanlage.json",
+                                        "w",
                                     ) as json_file:
                                         json.dump(x, json_file, indent=4)
                                 else:
@@ -59,6 +62,7 @@ while True:
                                     (x["aktoren"][k]["zustand"]) = "0"
                                     # Neuen Zustand speichern:
                                     with open(
-                                        "/home/pi/config_dateien/universe.json", "w"
+                                        "/home/pi/config_dateien/schliessanlage.json",
+                                        "w",
                                     ) as json_file:
                                         json.dump(x, json_file, indent=4)
