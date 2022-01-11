@@ -4,21 +4,20 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
-while True:
-    # schliessanlage.json laden und lesen:
-    with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
-        x = json.load(json_file)
-        la = len(x["aktoren"])  # Anzahl der gespeicherten Aktoren
-        for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
-            aktor = x["aktoren"][k]["typ"]
-            if aktor == "haustuer":  # Benötigter Aktor gefunden
-                zustand = x["aktoren"][k]["zustand"]
-                zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
-                with open(
-                    "/home/pi/config_dateien/schliessanlage.json", "w"
-                ) as json_file:
-                    json.dump(x, json_file, indent=4)
+# Tür und json initialisieren:
+forward(1, int(200))
+with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
+    x = json.load(json_file)
+    la = len(x["aktoren"])  # Anzahl der gespeicherten Aktoren
+    for k in range(0, la):  # Gespeicherte Aktoren werden durchlaufen
+        aktor = x["aktoren"][k]["typ"]
+        if aktor == "haustuer":  # Benötigter Aktor gefunden
+            zustand = x["aktoren"][k]["zustand"]
+            zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
+            with open("/home/pi/config_dateien/schliessanlage.json", "w") as json_file:
+                json.dump(x, json_file, indent=4)
 
+while True:
     id, text = reader.read()
     with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
         x = json.load(json_file)
