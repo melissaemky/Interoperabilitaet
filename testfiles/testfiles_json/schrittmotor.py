@@ -48,7 +48,7 @@ def forward(delay, steps):
 
 
 def backwards(delay, steps):
-    while GPIO.input(10) == 0:
+    if GPIO.input(10) == 0:
         print(GPIO.input(10))
         for i in range(steps):
             for j in reversed(range(StepCount)):
