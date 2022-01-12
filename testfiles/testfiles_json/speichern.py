@@ -1,6 +1,6 @@
 import json
 from mfrc522 import SimpleMFRC522
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
 reader = SimpleMFRC522()
