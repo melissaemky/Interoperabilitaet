@@ -134,16 +134,10 @@ def luftsensor():
     luftfeuchte = luftfeuchte.replace('"',"")
     temperatur = temperatur.replace('"',"")
 
-    
-    with open ("/home/pi/config_dateien/universe.json") as json_file:
-        x = json.load(json_file)
-    x["sensoren"][0]["messwert"] = temperatur
-    x["sensoren"][1]["messwert"] = luftfeuchte
-    x["sensoren"][2]["messwert"] = voc
-    with open("/home/pi/config_dateien/universe.json", 'w') as json_file:
-        json.dump(x, json_file, indent=4)
+    print(voc + " " + luftfeuchte + " " + temperatur)
 
 """
 if __name__ == "__main__":
     _main()
 """
+luftsensor()
