@@ -5,7 +5,8 @@ from mfrc522 import SimpleMFRC522
 reader = SimpleMFRC522()
 
 
-def schliessanlage():
+# def schliessanlage():
+while True:
     # universe.json laden und lesen:
     with open("/home/pi/config_dateien/universe.json") as json_file:
         x = json.load(json_file)

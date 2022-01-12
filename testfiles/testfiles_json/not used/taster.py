@@ -2,11 +2,6 @@ import requests
 import json
 import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(38, GPIO.IN)  # Blauer Taster(Löschen)
-GPIO.setup(40, GPIO.IN)  # Grüner Taster(Speichern)
-GPIO.setup(36, GPIO.IN)  # Roter Taster
-GPIO.setup(37, GPIO.IN)  # Gelber Taster
 
 
 def time_unix(timetoconvert):
@@ -17,7 +12,12 @@ def time_unix(timetoconvert):
     return unix
 
 
-while(1):
+def taster():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(38, GPIO.IN)  # Blauer Taster(Löschen)
+    GPIO.setup(40, GPIO.IN)  # Grüner Taster(Speichern)
+    GPIO.setup(36, GPIO.IN)  # Roter Taster
+    GPIO.setup(37, GPIO.IN)  # Gelber Taster
 
     with open("/home/pi/config_dateien/taster.json") as json_file:
         x = json.load(json_file)
