@@ -1,12 +1,16 @@
 import json
 from mfrc522 import SimpleMFRC522
+import RPI.GPIO as GPIO
 
+GPIO.setwarnings(False)
 reader = SimpleMFRC522()
 
 
 def speichern():
     print("Speichern gestartet")
     id, text = reader.read()
+    print(id)
+    """
     # schliessanlage.json laden und lesen:
     with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
         x = json.load(json_file)
@@ -58,6 +62,7 @@ def speichern():
             write_benutzer(x)
             write_karten(y)
             print("Der Benutzer wurde gespeichert und der Zugang wurde gestattet.")
+"""
 
 
 speichern()
