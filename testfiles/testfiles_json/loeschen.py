@@ -1,11 +1,15 @@
 import json
 from mfrc522 import SimpleMFRC522
+import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
 reader = SimpleMFRC522()
 
 
 def löschen():
+    print("Löschen gestartet")
     id, text = reader.read()
+    print(id)
     # schliessanlage.json laden und lesen:
     with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
         x = json.load(json_file)
