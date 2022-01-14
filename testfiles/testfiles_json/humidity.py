@@ -123,9 +123,9 @@ def luftsensor():
 
     wavemini.connect(retries=3)
     messwerte = str(wavemini.read())    
-    print(messwerte)
+    #print(messwerte)
     wavemini.disconnect()
-'''
+
     temperatur = messwerte[16:21]
     luftfeuchte = messwerte[34:42]
     voc = messwerte[52:56]
@@ -136,7 +136,6 @@ def luftsensor():
 
     print(voc + " " + luftfeuchte + " " + temperatur)'''
 
-"""
 if __name__ == "__main__":
     _main()
 """
