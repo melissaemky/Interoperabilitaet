@@ -6,7 +6,7 @@ GPIO.setwarnings(False)
 reader = SimpleMFRC522()
 
 
-def löschen():
+def loeschen():
     print("Löschen gestartet")
     id, text = reader.read()
     print(id)
@@ -31,4 +31,4 @@ def löschen():
                     print("Der Zugang wurde verweigert.")
 
 
-löschen()
+loeschen()

@@ -4,6 +4,8 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
+"""
+
 # Tür und json initialisieren:
 forward(1, int(200))
 with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
@@ -16,6 +18,7 @@ with open("/home/pi/config_dateien/schliessanlage.json") as json_file:
             zustand = "0"  # Zustand auf "0" gesetzt (Grundzustand)
             with open("/home/pi/config_dateien/schliessanlage.json", "w") as json_file:
                 json.dump(x, json_file, indent=4)
+"""
 
 while True:
     id, text = reader.read()
