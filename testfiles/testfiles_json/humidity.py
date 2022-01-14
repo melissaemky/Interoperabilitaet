@@ -127,14 +127,14 @@ def luftsensor():
     wavemini.disconnect()
 
     temperatur = messwerte[16:21]
-    luftfeuchte = messwerte[34:42]
+    luftfeuchte = messwerte[36:42]
     voc = messwerte[52:56]
 
     voc = voc.replace('"',"")
     luftfeuchte = luftfeuchte.replace('"',"")
     temperatur = temperatur.replace('"',"")
 
-    print(voc + "/n" + luftfeuchte + "/n" + temperatur)
+    print(voc)# + "/n" + luftfeuchte + "/n" + temperatur)
 """
 if __name__ == "__main__":
     _main()
