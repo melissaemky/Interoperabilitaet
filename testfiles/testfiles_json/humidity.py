@@ -134,7 +134,7 @@ def luftsensor():
     luftfeuchte = luftfeuchte.replace('"',"")
     temperatur = temperatur.replace('"',"")
 
-    print(voc + "/n" + luftfeuchte + "/n" + temperatur)
+    print(voc + "\\n" + luftfeuchte + "\\n" + temperatur)
 """
 if __name__ == "__main__":
     _main()
